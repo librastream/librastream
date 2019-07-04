@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { transaction } from "../actions";
+import { transaction } from "../store/actions";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';

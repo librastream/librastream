@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import { Route } from 'react-router-dom';
-import Navigation from './components/Navigation';
-
-import SetTransaction from './containers/SetTransaction';
-import TransactionsListContainer from './containers/TransactionsListContainer';
+import Overview from './pages/Overview';
+import Header from './components/Header';
+import AddressOverview from './pages/AddressOverview';
+import TransactionDetails from './pages/TransactionDetails';
 
 class App extends Component {
   render() {
     return (
-      <Container>
-        <Row className="row">
-          <Col xs={12}>
-            <h1>Transactions List</h1>
-            <Navigation/>
-            <Route exact path="/list" component={TransactionsListContainer}/>
-            <Route exact path="/new-item" component={SetTransaction}/>
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Header/>
+        <Route exact path="/" component={Overview}/>
+        <Route exact path="/address-overview" component={AddressOverview}/>
+        <Route exact path="/transaction-details" component={TransactionDetails}/>
+      </div>
     );
   }
 }

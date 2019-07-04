@@ -1,0 +1,45 @@
+#transactionItem {
+  height: 145px;
+  background: #FFFFFF;
+  border: 1px solid #E7E8F2;
+  border-top: none;
+  display: flex;
+  padding: 37px 18px 32px;
+
+  &:hover {
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .title {
+
+  }
+
+  .content {
+    margin: 0;
+  }
+
+  .column1 {
+    width: 27%;
+  }
+
+  .column2 {
+    width: 12%;
+  }
+
+  .column3 {
+    width: 17%;
+  }
+
+  .column4 {
+    width: 20%;
+  }
+
+  .column5 {
+    width: 10%;
+  }
+
+  .column6 {
+    width: 14%;
+  }
+
+}

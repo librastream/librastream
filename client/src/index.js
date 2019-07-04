@@ -6,9 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import createSagaMiddleware from 'redux-saga';
 import App from './App';
 
-import { loadTransactionsList } from './actions';
-import rootSaga from './sagas';
-import transactionsApp from './reducers';
+import { loadTransactionsList } from './store/actions';
+import rootSaga from './store/sagas';
+import transactionsApp from './store/reducers';
 import * as serviceWorker from './serviceWorker';
 
 const sagaMiddleware = createSagaMiddleware();

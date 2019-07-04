@@ -1,0 +1,57 @@
+#overview {
+  .searchBar {
+    background: radial-gradient(552.77px at 49.19% 51.45%, #0054C7 0%, #01048A 100%);
+    border: 1px solid #E7E8F2;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 27px 45px 40px;
+    width: 100%;
+
+    .title {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .search {
+      position: relative;
+      a {
+        background-color: #1AA7E8;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        color: #fff;
+        height: 100%;
+        line-height: 2.5;
+        margin: auto;
+        position: absolute;
+        text-align: center;
+        width: 164px;
+        right: 0;
+      }
+
+      svg {
+        left: 16px;
+        position: absolute;
+        top: 12px;
+      }
+
+      input {
+        background-color: #fff;
+        border: 1px solid #E7E8F2;
+        border-radius: 100px;
+        box-sizing: border-box;
+        height: 45px;
+        padding-left: 50px;
+        width: 100%;
+      }
+    }
+  }
+
+  .transactionPanel {
+    .header {
+      background-color: #fff;
+      border: 1px solid #E7E8F2;
+      box-sizing: border-box;
+      height: 45px;
+    }
+  }
+}
