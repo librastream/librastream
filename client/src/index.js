@@ -1,16 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import transactionsApp from "./reducers";
-
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import App from './App';
+
+import { loadTransactionsList } from './actions';
+import rootSaga from './sagas';
+import transactionsApp from "./reducers";
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(transactionsApp);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(transactionsApp, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);
+
+store.dispatch(loadTransactionsList());
+
 ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <App/>
     </Provider>,
     document.getElementById('root'));
 

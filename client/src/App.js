@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+
+import SetTransaction from './containers/SetTransaction';
+import TransactionsListContainer from "./containers/TransactionsListContainer";
 
 class App extends Component {
   render() {
@@ -10,8 +12,9 @@ class App extends Component {
         <Container>
           <Row className="row">
             <Col xs={12}>
-              <h1>Libra Stream Explorer</h1>
-              <Button>Action</Button>
+              <h1>Transactions List</h1>
+              <SetTransaction/>
+              <TransactionsListContainer/>
             </Col>
           </Row>
         </Container>

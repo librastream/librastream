@@ -1,4 +1,5 @@
-import { SET_TRANSACTION} from '../actions';
+import { SET_TRANSACTION } from '../actions';
+import { RENDER_TRANSACTIONS_LIST} from "../actions";
 
 const initialState = {
   transactionsList: []
@@ -6,9 +7,14 @@ const initialState = {
 
 export default function transactionsApp(state = initialState, action) {
   switch (action.type) {
+    case RENDER_TRANSACTIONS_LIST:
+      return {
+        ...state,
+        transactionsList: action.transactionsList
+      };
     case SET_TRANSACTION:
       let newTransactionsList = [
-          ...state.transactionsList,
+        ...state.transactionsList,
         {
           ...action.transaction
         }
