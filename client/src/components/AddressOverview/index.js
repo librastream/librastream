@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TransactionItem from '../../components/TransactionItem';
-import AddressItem from '../../components/AddressItem';
-import QRCode from '../../components/QRCode';
+import TransactionItem from '../TransactionItem';
+import AddressItem from '../AddressItem';
+import QRCode from '../QRCode';
 import './style.scss';
 
 class AddressOverview extends Component {

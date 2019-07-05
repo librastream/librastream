@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Profile from '../../pages/Profile';
+import Profile from '../Profile';
 import './style.scss';
 
 export default () => (

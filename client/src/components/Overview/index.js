@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TransactionItem from '../../components/TransactionItem';
+import TransactionItem from '../TransactionItem';
 import '../../styles/common.scss';
 import './style.scss';
 
