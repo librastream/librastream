@@ -1,31 +1,51 @@
+@import '../../styles/variables';
+@import '../../styles/font';
+
 #overview {
   .searchBar {
-    background: radial-gradient(552.77px at 49.19% 51.45%, #0054C7 0%, #01048A 100%);
-    border: 1px solid #E7E8F2;
+    background: $grad-searchBar;
+    border: $border-gray;
     border-radius: 6px;
-    box-sizing: border-box;
+    margin-bottom: 85px;
     padding: 27px 45px 40px;
-    width: 100%;
 
-    .title {
-      color: #fff;
-      margin-bottom: 10px;
+    .header {
+      position: relative;
+
+      .title {
+        color: $color-white;
+        margin-bottom: 10px;
+      }
+
+      svg {
+        position: absolute;
+        right: 13px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
     }
 
     .search {
       position: relative;
+
       a {
-        background-color: #1AA7E8;
-        border-top-right-radius: 100px;
+        background-color: $color-lightblue;
         border-bottom-right-radius: 100px;
-        color: #fff;
+        border-top-right-radius: 100px;
         height: 100%;
-        line-height: 2.5;
-        margin: auto;
         position: absolute;
-        text-align: center;
-        width: 164px;
         right: 0;
+        text-align: center;
+        min-width: 164px;
+
+        .search__btn {
+          color: $color-white;
+          line-height: 2.8;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
       }
 
       svg {
@@ -35,23 +55,70 @@
       }
 
       input {
-        background-color: #fff;
-        border: 1px solid #E7E8F2;
+        background-color: $color-white;
+        border: $border-gray;
         border-radius: 100px;
-        box-sizing: border-box;
+        color: $color-gray;
         height: 45px;
         padding-left: 50px;
         width: 100%;
+
+        &::placeholder {
+          color: $color-light;
+          font-size: 12px;
+        }
       }
     }
   }
 
-  .transactionPanel {
+  .card {
+    background: #fff;
+    border-radius: 6px;
+    border: $border-gray;
+
     .header {
-      background-color: #fff;
-      border: 1px solid #E7E8F2;
-      box-sizing: border-box;
-      height: 45px;
+      align-items: baseline;
+      border-bottom: $border-gray;
+      display: flex;
+      min-height: 45px;
+      position: relative;
+
+      .title {
+        color: $color-blue;
+        padding: 14px 20px;
+      }
+
+      .subtitle {
+        color: $color-light;
+        font-size: 10px;
+      }
+
+      svg {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+    }
+  }
+
+  .footer {
+    min-height: 41px;
+    display: flex;
+
+    .status {
+      color: $color-darkblue;
+      font-size: 10px;
+      margin: auto 0;
+      opacity: .4;
+      input {
+        border: $border-gray2;
+        border-radius: 4px;
+        box-shadow: none;
+        margin: 0 10px 0 25px;
+
+        width: 40px;
+      }
     }
   }
 }
