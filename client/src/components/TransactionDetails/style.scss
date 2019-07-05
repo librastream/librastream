@@ -1,0 +1,103 @@
+@import '../../styles/variables';
+@import '../../styles/font';
+
+#transactionDetails {
+  .card {
+    .body {
+      span {
+        margin-right: 10px;
+      }
+
+      .row {
+        border-bottom: $border-gray;
+        color: $color-lightblue;
+        display: flex;
+        font-size: 14px;
+        margin: 0;
+        min-height: 70px;
+        padding: 0 30px;
+        width: 100%;
+      }
+
+      .title {
+        color: $color-darkblue;
+        margin: auto;
+        width: 20%;
+        opacity: .26;
+      }
+      .opacity-1 {
+        opacity: 1;
+      }
+
+      .opacity-26 {
+        opacity: .26;
+      }
+
+      .content {
+        margin: auto;
+        width: 80%;
+      }
+
+      .row1 {
+        color: $color-black;
+      }
+
+      .row2 {
+        color: $color-gray;
+
+        .content {
+          svg {
+            margin-right: 12px;
+          }
+        }
+      }
+
+      .row3 {
+        color: $color-gray;
+      }
+
+      .row4 {
+        color: $color-lightblue;
+      }
+
+      .row5 {
+        color: $color-lightblue;
+      }
+
+      .row6 {
+        color: $color-gray;
+
+        .content {
+          svg {
+            margin-right: 12px;
+          }
+        }
+      }
+
+      .row7 {
+        color: $color-gray;
+
+        .content {
+          svg {
+            margin-right: 12px;
+          }
+        }
+      }
+
+      .row8 {
+        color: $color-gray;
+
+        .content {
+          svg {
+            margin-right: 12px;
+          }
+        }
+      }
+
+      .row9 {
+        color: $color-gray;
+      }
+
+    }
+  }
+}

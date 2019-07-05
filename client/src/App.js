@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Overview from './components/Overview';
 import Header from './components/Header';
 import AddressOverview from './components/AddressOverview';
-import TransactionDetails from './comonents/TransactionDetails';
+import TransactionDetails from './components/TransactionDetails';
 
 class App extends Component {
   render() {

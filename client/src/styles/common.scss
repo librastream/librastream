@@ -16,12 +16,24 @@ html, body {
   margin: 0 160px;
 }
 
+.text-lightblue {
+  color: $color-lightblue;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.opacity-26 {
+  opacity: .26;
+}
+
 .card {
   background: #fff;
   border-radius: 6px;
   border: $border-gray;
   margin-bottom: 60px;
-  
+
   .header {
     align-items: baseline;
     border-bottom: $border-gray;

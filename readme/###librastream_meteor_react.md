@@ -53,4 +53,5 @@ TransactionItem
 ### Report
 1. Screen 1: declare font-color in input of SearchBar
 2. Screen 1  clearly define font-weight & letter-spacing in header of TransactionsList
-3. Screen 2: look different - `Approved` in QRCode & `Approved` in TransactionsList
+3. Screen 2: look different - `Approved` in QRCode & `Approved` of TransactionsList
+4. Screen 3: `Transition Hash` font-weight in `Transition Details`
