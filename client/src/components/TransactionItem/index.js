@@ -54,6 +54,5 @@ export default () => (
         <span>Approved</span>
       </div>
     </div>
-
   </div>
 );

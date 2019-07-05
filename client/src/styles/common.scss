@@ -15,3 +15,56 @@ html, body {
 .content {
   margin: 0 160px;
 }
+
+.card {
+  background: #fff;
+  border-radius: 6px;
+  border: $border-gray;
+  margin-bottom: 60px;
+  
+  .header {
+    align-items: baseline;
+    border-bottom: $border-gray;
+    display: flex;
+    min-height: 45px;
+    position: relative;
+
+    .title {
+      color: $color-blue;
+      padding: 14px 20px;
+    }
+
+    .subtitle {
+      color: $color-light;
+      font-size: 10px;
+    }
+
+    svg {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+
+  .footer {
+    min-height: 41px;
+    display: flex;
+
+    .status {
+      color: $color-darkblue;
+      font-size: 10px;
+      margin: auto 0;
+      opacity: .4;
+
+      input {
+        border: $border-gray2;
+        border-radius: 4px;
+        box-shadow: none;
+        margin: 0 10px 0 25px;
+        padding: 2px 5px;
+        width: 40px;
+      }
+    }
+  }
+}

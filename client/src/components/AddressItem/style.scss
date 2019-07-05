@@ -1,0 +1,66 @@
+@import '../../styles/variables';
+@import '../../styles/font';
+
+#addressItem {
+  background: $color-white;
+  border-bottom: $border-gray;
+
+  .row {
+    border-bottom: $border-gray;
+    color: $color-lightblue;
+    display: flex;
+    font-size: 14px;
+    margin: 0;
+    min-height: 70px;
+    padding: 0 30px;
+    width: 100%;
+  }
+
+  .title {
+    color: $color-darkblue;
+    margin: auto;
+    opacity: .26;
+    width: 28%;
+  }
+
+  .content {
+    margin: auto;
+    width: 72%;
+  }
+
+  .row1 {
+    span {
+      opacity: .4;
+    }
+  }
+
+  .row2 {
+    span {
+      opacity: .4;
+    }
+  }
+
+  .row3 {
+    color: $color-gray;
+  }
+
+  .row4 {
+    color: $color-gray;
+
+    .content {
+      svg {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .row5 {
+    color: $color-gray;
+
+    .content {
+      svg {
+        margin-right: 12px;
+      }
+    }
+  }
+}
