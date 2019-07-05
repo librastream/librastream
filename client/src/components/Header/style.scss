@@ -1,14 +1,62 @@
-#header {
-  background-color: #fff;
-  height: 71px;
+@import '../../styles/variables';
+@import '../../styles/font';
 
+#header {
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 1px 0px #E7E8F2;
+  color: $color-gray;
+  display: flex;
+  height: 71px;
+  position: relative;
   .logo {
+    align-items: center;
     display: flex;
+    padding: 15px 30px;
+
+    svg {
+      margin-right: 8px;
+    }
+
+    .title {
+      color: $color-darkblue;
+      margin: 0 25px 0 0;
+    }
+  }
+
+  .navbar {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    a {
+      height: 100%;
+      text-decoration: none;
+      .navbar__title {
+        color: $color-gray;
+        line-height: 4.5;
+        padding: 0 20px;
+      }
+    }
   }
 
   .pull-right {
     display: flex;
+    height: 100%;
     position: absolute;
     right: 0;
+    a {
+      line-height: 4;
+      height: 100%;
+      padding: 0 25px;
+      border-right: $border-gray;
+      &:first-of-type {
+        border-left: $border-gray;
+      }
+    }
+
+    #badge {
+      position: absolute;
+      top: 10px;
+    }
   }
 }
