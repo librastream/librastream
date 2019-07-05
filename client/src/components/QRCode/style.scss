@@ -1,3 +1,14 @@
-.qrcode {
-  width: 50%;
+@import '../../styles/variables';
+@import '../../styles/font';
+
+#qrcode {
+  .qrcode {
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
 }

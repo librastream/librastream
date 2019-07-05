@@ -7,9 +7,9 @@ import './style.scss';
 class AddressOverview extends Component {
   render() {
     return (
-      <div id="address-overview" className="content">
+      <div id="addressOverview" className="content">
         <div className="mb-45 d-flex">
-          <div className="card w-50">
+          <div className="card mr-30 w-50">
             <div className="header">
               <h5 className="title">Address Overview</h5>
               <div className="subtitle">
@@ -34,7 +34,26 @@ class AddressOverview extends Component {
                       fill="#A7A9C0"/>
               </svg>
             </div>
-            <QRCode/>
+            <div className="body">
+              <QRCode/>
+              <div className="state">
+                <div>
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8Z"
+                      fill="#01058A"/>
+                  </svg>
+                  <span>Approved</span>
+                </div>
+                <div className="dropdown">
+                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actions
+                  </button>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
