@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: 'LibraStream',
-    script: 'index.js',
+    script: 'react-scripts start',
     instances: 1,
     autorestart: true,
     watch: false,
