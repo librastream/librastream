@@ -55,3 +55,42 @@ TransactionItem
 2. Screen 1  clearly define font-weight & letter-spacing in header of TransactionsList
 3. Screen 2: look different - `Approved` in QRCode & `Approved` of TransactionsList
 4. Screen 3: `Transition Hash` font-weight in `Transition Details`
+
+### issue 2
+pm2 ecosystem_config: /home/ubuntu/ecosystem.config.js
+Start and Daemonize any application:
+$ pm2 start app.js
+
+Load Balance 4 instances of api.js:
+$ pm2 start api.js -i 4
+
+Monitor in production:
+$ pm2 monitor
+
+Make pm2 auto-boot at server restart:
+$ pm2 startup
+
+To go further checkout:
+http://pm2.io/
+
+ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ubuntu/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase): apple
+Enter same passphrase again: apple
+Your identification has been saved in /home/ubuntu/.ssh/id_rsa.
+Your public key has been saved in /home/ubuntu/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:DYsTWIxjvu6eckwBAMiNwboal53JLVj0yPGrftVmtQ0 ubuntu@ip-172-31-33-236
+The key's randomart image is:
++---[RSA 2048]----+
+|Bo+  o.          |
+|.+..*o.          |
+|.  *.*. .        |
+|.   * oo +  E    |
+| . * *o.S... +   |
+|o + O o.. + . .  |
+|.o + o . o       |
+|. . =..          |
+|   *=.           |
++----[SHA256]-----+
