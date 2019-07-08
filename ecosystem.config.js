@@ -20,7 +20,7 @@ module.exports = {
     production : {
       user : 'ubuntu',
       host : '18.130.169.108',
-      key  : 'STREAM-TEST.pem',
+      key  : '../STREAM-TEST.pem',
       ref  : 'origin/dev',
       repo : 'git@github.com:librastream/librastream.git',
       path : '/var/www/librastream',
