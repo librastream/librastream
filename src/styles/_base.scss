@@ -1,5 +1,4 @@
-@import './variables';
-@import './font';
+@import 'imports/index';
 
 @font-face {
   font-family: 'Helvetica Neue Medium';
@@ -17,7 +16,7 @@ html, body {
 }
 
 .text-lightblue {
-  color: $color-lightblue;
+  color: $color-blue3;
 }
 
 .opacity-1 {
@@ -42,12 +41,12 @@ html, body {
     position: relative;
 
     .title {
-      color: $color-blue;
+      color: $color-blue1;
       padding: 14px 20px;
     }
 
     .subtitle {
-      color: $color-light;
+      color: $color-light2;
       font-size: 10px;
     }
 
@@ -64,7 +63,7 @@ html, body {
     display: flex;
 
     .status {
-      color: $color-darkblue;
+      color: $color-dark1;
       font-size: 10px;
       margin: auto 0;
       opacity: .4;

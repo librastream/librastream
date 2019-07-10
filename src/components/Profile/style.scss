@@ -1,12 +1,12 @@
-@import '../../styles/variables';
-@import '../../styles/font';
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
 
 #profile {
   align-items: center;
   display: flex;
   min-width: 230px;
   img {
-    background-color: $color-light;
+    background-color: $color-light2;
     border-radius: 50%;
     margin-left: 15px;
     margin-right: 20px;
@@ -15,12 +15,12 @@
     margin-right: 20px;
 
     .name {
-      color: $color-darkblue;
+      color: $color-dark1;
       font-size: 15px;
     }
 
     .occupation {
-      color: $color-lightgray;
+      color: $color-light3;
       font-size: 12px;
     }
   }

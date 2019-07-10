@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/font';
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
 
 #transactionItem {
   background: $color-white;
@@ -13,7 +13,7 @@
   }
 
   .title {
-    color: $color-darkblue;
+    color: $color-dark1;
     opacity: .26;
   }
 
@@ -26,7 +26,7 @@
   }
 
   .column1 {
-    color: $color-lightblue;
+    color: $color-blue3;
     width: 27%;
 
     span {
@@ -41,12 +41,12 @@
   }
 
   .column2 {
-    color: $color-gray;
+    color: $color-dark2;
     width: 12%;
   }
 
   .column3 {
-    color: $color-lightblue;
+    color: $color-blue3;
     width: 17%;
 
     .content {
@@ -57,12 +57,12 @@
   }
 
   .column4 {
-    color: $color-lightblue;
+    color: $color-blue3;
     width: 20%;
   }
 
   .column5 {
-    color: $color-gray;
+    color: $color-dark2;
     width: 10%;
   }
 

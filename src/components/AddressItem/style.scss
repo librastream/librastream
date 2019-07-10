@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/font';
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
 
 #addressItem {
   background: $color-white;
@@ -7,7 +7,7 @@
 
   .row {
     border-bottom: $border-gray;
-    color: $color-lightblue;
+    color: $color-blue3;
     display: flex;
     font-size: 14px;
     margin: 0;
@@ -17,12 +17,11 @@
   }
 
   .title {
-    color: $color-darkblue;
+    color: $color-dark1;
     margin: auto;
     opacity: .26;
     width: 28%;
   }
-
   .content {
     margin: auto;
     width: 72%;
@@ -41,11 +40,11 @@
   }
 
   .row3 {
-    color: $color-gray;
+    color: $color-dark2;
   }
 
   .row4 {
-    color: $color-gray;
+    color: $color-dark2;
 
     .content {
       svg {
@@ -55,7 +54,7 @@
   }
 
   .row5 {
-    color: $color-gray;
+    color: $color-dark2;
 
     .content {
       svg {

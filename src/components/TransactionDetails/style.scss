@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/font';
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
 
 #transactionDetails {
   .card {
@@ -10,7 +10,7 @@
 
       .row {
         border-bottom: $border-gray;
-        color: $color-lightblue;
+        color: $color-blue3;
         display: flex;
         font-size: 14px;
         margin: 0;
@@ -20,7 +20,7 @@
       }
 
       .title {
-        color: $color-darkblue;
+        color: $color-dark1;
         margin: auto;
         width: 20%;
         opacity: .26;
@@ -43,7 +43,7 @@
       }
 
       .row2 {
-        color: $color-gray;
+        color: $color-dark2;
 
         .content {
           svg {
@@ -53,19 +53,19 @@
       }
 
       .row3 {
-        color: $color-gray;
+        color: $color-dark2;
       }
 
       .row4 {
-        color: $color-lightblue;
+        color: $color-blue3;
       }
 
       .row5 {
-        color: $color-lightblue;
+        color: $color-blue3;
       }
 
       .row6 {
-        color: $color-gray;
+        color: $color-dark2;
 
         .content {
           svg {
@@ -75,7 +75,7 @@
       }
 
       .row7 {
-        color: $color-gray;
+        color: $color-dark2;
 
         .content {
           svg {
@@ -85,7 +85,7 @@
       }
 
       .row8 {
-        color: $color-gray;
+        color: $color-dark2;
 
         .content {
           svg {
@@ -95,7 +95,7 @@
       }
 
       .row9 {
-        color: $color-gray;
+        color: $color-dark2;
       }
 
     }

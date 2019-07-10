@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/font';
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
 
 #overview {
   .searchBar {
@@ -29,7 +29,7 @@
       position: relative;
 
       a {
-        background-color: $color-lightblue;
+        background-color: $color-blue3;
         border-bottom-right-radius: 100px;
         border-top-right-radius: 100px;
         height: 100%;
@@ -58,13 +58,13 @@
         background-color: $color-white;
         border: $border-gray;
         border-radius: 100px;
-        color: $color-gray;
+        color: $color-dark2;
         height: 45px;
         padding-left: 50px;
         width: 100%;
 
         &::placeholder {
-          color: $color-light;
+          color: $color-light2;
           font-size: 12px;
         }
       }

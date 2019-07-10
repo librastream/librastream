@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TransactionItem from '../TransactionItem';
-import '../../styles/common.scss';
+import '../../styles/_base.scss';
 import './style.scss';
 
 class Overview extends Component {

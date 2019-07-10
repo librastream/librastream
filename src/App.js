@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Overview from './components/Overview';
-import Header from './components/Header';
+import Header from './components/Header/header';
 import AddressOverview from './components/AddressOverview';
 import TransactionDetails from './components/TransactionDetails';
 

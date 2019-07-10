@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Profile from '../Profile';
-import './style.scss';
+import './header.scss';
 
 export default () => (
   <div id="header">
