@@ -3,7 +3,7 @@ import './style.scss';
 import Profile from '../../assets/images/profile.png';
 export default () => (
   <div id="profile">
-    <img src={Profile} alt="image"/>
+    <img src={Profile} alt="profile pic"/>
     <div className="desc">
       <div className="name">Stephen Austin</div>
       <div className="occupation">Crypto Trader</div>

@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 
 const DataSchema = new Schema(
   {
-      version: String,
+      version: Number,
       raw: Object,
       sender: Object,
       hash: Object,
       gas: Object,
       arguments: Array,
       module: Object,
-      date: Number
+      date: Date
 
   }
 );

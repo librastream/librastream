@@ -54,8 +54,7 @@ class TransactionDetails extends Component {
             <div className="row row6">
               <h4 className="title">Value</h4>
               <div className="content">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"
-                     xmlns="http://www.w3.org/1999/xlink">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="23" height="23" rx="4" fill="#01058A"/>
                   <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>
                   <defs>
@@ -73,8 +72,7 @@ class TransactionDetails extends Component {
             <div className="row row7">
               <h4 className="title">Transaction Fee</h4>
               <div className="content">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"
-                     xmlns="http://www.w3.org/1999/xlink">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="23" height="23" rx="4" fill="#01058A"/>
                   <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>
                   <defs>
@@ -92,8 +90,7 @@ class TransactionDetails extends Component {
             <div className="row row8">
               <h4 className="title">Total Balance</h4>
               <div className="content">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"
-                     xmlns="http://www.w3.org/1999/xlink">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="23" height="23" rx="4" fill="#01058A"/>
                   <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>
                   <defs>
