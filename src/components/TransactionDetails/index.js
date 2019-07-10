@@ -5,7 +5,7 @@ import './style.scss';
 class TransactionDetails extends Component {
   render() {
     return (
-      <div id="transactionDetails" className="content">
+      <div id="transactionDetails" className="container">
         <div className="card">
           <div className="header">
             <h5 className="title">Transaction Details</h5>
@@ -21,13 +21,13 @@ class TransactionDetails extends Component {
           <div className="body">
             <div className="row row1">
               <h4 className="title">Transaction Hash</h4>
-              <div className="content">
+              <div className="container">
                 <span>0x5c06bdf4550ae6a1709ed2905a222d8ed51282bcdf20439d3f4e27e320d0396e</span>
               </div>
             </div>
             <div className="row row2">
               <h4 className="title">Status</h4>
-              <div className="content">
+              <div className="container">
                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8Z"
@@ -38,25 +38,25 @@ class TransactionDetails extends Component {
             </div>
             <div className="row row3">
               <h4 className="title">Timestamp</h4>
-              <div className="content">
+              <div className="container">
                 <span>4 days 17 hrs ago (Jun-20-2019 10:27:52 PM +UTC)</span>
               </div>
             </div>
             <div className="row row4">
               <h4 className="title">From</h4>
-              <div className="content">
+              <div className="container">
                 <span>0x63d509f7152769ddf162ed048b83719fe1e31080</span>
               </div>
             </div>
             <div className="row row5">
               <h4 className="title">To</h4>
-              <div className="content">
+              <div className="container">
                 <span>0x63d509f7152769ddf162ed048b83719fe1e31080</span>
               </div>
             </div>
             <div className="row row6">
               <h4 className="title">Value</h4>
-              <div className="content">
+              <div className="container">
                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="23" height="23" rx="4" fill="#01058A"/>
                   <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>
@@ -74,7 +74,7 @@ class TransactionDetails extends Component {
             </div>
             <div className="row row7">
               <h4 className="title">Transaction Fee</h4>
-              <div className="content">
+              <div className="container">
                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="23" height="23" rx="4" fill="#01058A"/>
                   <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>
@@ -92,7 +92,7 @@ class TransactionDetails extends Component {
             </div>
             <div className="row row8">
               <h4 className="title">Total Balance</h4>
-              <div className="content">
+              <div className="container">
                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="23" height="23" rx="4" fill="#01058A"/>
                   <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>

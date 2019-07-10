@@ -1,0 +1,29 @@
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
+
+#footer {
+  .mb-45 {
+    margin-bottom: 45px;
+  }
+
+  .mr-30 {
+    margin-right: 30px;
+  }
+
+  .body {
+  }
+
+  .body > .state {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
+    div:first-of-type {
+      margin-right: 50px;
+
+      svg {
+        margin-right: 12px;
+      }
+    }
+  }
+}

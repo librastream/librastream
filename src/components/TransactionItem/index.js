@@ -6,7 +6,7 @@ export default () => (
   <div id="transactionItem">
     <div className="column column1">
       <h4 className="title">Txn Number</h4>
-      <div className="content">
+      <div className="container">
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="23" height="23" rx="4" fill="#01058A"/>
           <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>
@@ -23,11 +23,11 @@ export default () => (
     </div>
     <div className="column column2">
       <h4 className="title">Age</h4>
-      <div className="content">20 Secs Ago</div>
+      <div className="container">20 Secs Ago</div>
     </div>
     <div className="column column3">
       <h4 className="title">From</h4>
-      <div className="content">
+      <div className="container">
         <span>0x6d92958cdijeijd883...</span>
         <svg width="17" height="7" viewBox="0 0 17 7" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M11 7L17 3.5L11 0V3H0V4H11V7Z" fill="#01058A"/>
@@ -36,15 +36,15 @@ export default () => (
     </div>
     <div className="column column4">
       <h4 className="title">To</h4>
-      <div className="content">0x6d92958cdijeijd883...</div>
+      <div className="container">0x6d92958cdijeijd883...</div>
     </div>
     <div className="column column5">
       <h4 className="title">Value</h4>
-      <div className="content">1 Libra</div>
+      <div className="container">1 Libra</div>
     </div>
     <div className="column column6">
       <h4 className="title">Status</h4>
-      <div className="content">
+      <div className="container">
         <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8Z"

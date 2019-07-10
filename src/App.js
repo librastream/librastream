@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import Overview from './components/Overview';
+import Overview from './components/Overview/overview';
 import Header from './components/Header/header';
 import AddressOverview from './components/AddressOverview';
 import TransactionDetails from './components/TransactionDetails';

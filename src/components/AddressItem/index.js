@@ -6,25 +6,25 @@ export default () => (
   <div id="addressItem">
     <div className="row row1">
       <h4 className="title">Address</h4>
-      <div className="content">
+      <div className="container">
         <span>3B5ETTuag3jhWQzw5XnmAx56Hoy9mEyQzd</span>
       </div>
     </div>
     <div className="row row2">
       <h4 className="title">Hash 160</h4>
-      <div className="content">
+      <div className="container">
         <span>66ecbece49a7aa9bca6d433ce10a35ce3be3f294</span>
       </div>
     </div>
     <div className="row row3">
       <h4 className="title">Transactions</h4>
-      <div className="content">
+      <div className="container">
         <span>2</span>
       </div>
     </div>
     <div className="row row4">
       <h4 className="title">Total Recivied</h4>
-      <div className="content">
+      <div className="container">
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="23" height="23" rx="4" fill="#01058A"/>
           <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>
@@ -41,7 +41,7 @@ export default () => (
     </div>
     <div className="row row5">
       <h4 className="title">Total Balance</h4>
-      <div className="content">
+      <div className="container">
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="23" height="23" rx="4" fill="#01058A"/>
           <rect x="3" y="2" width="18" height="19" fill="url(#pattern0)"/>

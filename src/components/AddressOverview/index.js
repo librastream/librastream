@@ -7,7 +7,7 @@ import './style.scss';
 class AddressOverview extends Component {
   render() {
     return (
-      <div id="addressOverview" className="content">
+      <div id="addressOverview" className="container">
         <div className="mb-45 d-flex">
           <div className="card mr-30 w-50">
             <div className="header">

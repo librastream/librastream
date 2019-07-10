@@ -2,36 +2,23 @@
 @import '../../styles/typography';
 
 #overview {
-  .searchBar {
+  background-color: $color-light1;
+
+  .search {
     background: $grad-searchBar;
     border: $border-gray1;
     border-radius: 6px;
-    margin-bottom: 85px;
     padding: 27px 45px 40px;
+    margin-bottom: 85px;
+    height: 131px;
 
-    .header {
-      position: relative;
-
-      .title {
-        color: $color-white;
-        margin-bottom: 10px;
-      }
-
-      svg {
-        position: absolute;
-        right: 13px;
-        top: 50%;
-        transform: translate(0, -50%);
-      }
-    }
-
-    .search {
+    .search__bar {
       position: relative;
 
       a {
         background-color: $color-blue5;
-        border-bottom-right-radius: 100px;
-        border-top-right-radius: 100px;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
         height: 100%;
         position: absolute;
         right: 0;
@@ -57,15 +44,15 @@
       input {
         background-color: $color-white;
         border: $border-gray1;
-        border-radius: 100px;
+        border-radius: 8px;
         color: $color-dark2;
         height: 45px;
         padding-left: 50px;
         width: 100%;
 
         &::placeholder {
-          color: $color-light2;
-          font-size: 12px;
+          color: $color-light3;
+
         }
       }
     }

@@ -1,10 +1,11 @@
 // variables
 
 // color
-$color-white: #fff;
-$color-light1: #EEEFF7;
-$color-light2: #A7A9C0;
-$color-light3: #8B8C99;
+$color-white: #FFF;
+$color-light1: #FAFAFd;
+$color-light2: #EEEFF7;
+$color-light3: #A7A9C0;
+$color-light4: #8B8C99;
 $color-dark2: #33343D;
 $color-dark1: #25233A;
 $color-black: #000;
@@ -14,8 +15,9 @@ $color-blue2: #01058A;
 $color-blue3: #01346C;
 $color-blue4: #0054C7;
 $color-blue5: #1AA8E9;
+
 // gradient
-$grad-searchBar: radial-gradient(552.77px at 49.19% 51.45%, $color-blue4 0%, $color-blue2 100%);
+$grad-searchBar: linear-gradient(96.35deg, #00052A -0.44%, #00346C 74.23%);
 $grad-button: radial-gradient(106.61px at -25% -23.81%, $color-blue1 0%, $color-blue3 100%);
 
 // border
@@ -27,4 +29,4 @@ $box-shadow-hover: 0 5px 12px rgba(0, 0, 0, 0.1);
 
 // define
 $color-primary: $color-blue2;
-$color-secondary: $color-light2;
+$color-secondary: $color-light3;
