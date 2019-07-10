@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 import Profile from '../../assets/images/profile.png';
+
 export default () => (
   <div id="profile">
     <img src={Profile} alt="profile pic"/>

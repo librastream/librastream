@@ -44,7 +44,7 @@ class Overview extends Component {
           <TransactionItem/>
           <div className="footer">
             <div className="status">
-              <input type="number" />
+              <input type="number"/>
               Show 07 per second.
             </div>
           </div>

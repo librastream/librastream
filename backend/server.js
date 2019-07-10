@@ -1,4 +1,4 @@
-require('dotenv').config({ path: "../.env" });
+require('dotenv').config({ path: '../.env' });
 const mongoose = require('mongoose');
 const express = require('express');
 let cors = require('cors');
@@ -14,11 +14,11 @@ app.use(cors());
 const router = express.Router();
 
 if (!process.env.DATABASE) {
-  console.log("Please specify a DATABASE uri")
+  console.log('Please specify a DATABASE uri');
   return;
 }
 if (!process.env.SERVER_PORT) {
-  console.log("Please specify SERVER_PORT")
+  console.log('Please specify SERVER_PORT');
   return;
 }
 
@@ -42,22 +42,22 @@ let params = {
 };
 
 let updateExplorer = () => {
-  client.request('get_transactions', params, function (err, result) {
+  client.request('get_transactions', params, function(err, result) {
     let arry_decoded;
     arry_decoded = decode(result);
     for (let elem in arry_decoded) {
       console.log(arry_decoded[elem]);
 
-      db.collection("transactions").insertOne(arry_decoded[elem], function (err, res) {
+      db.collection('transactions').insertOne(arry_decoded[elem], function(err, res) {
         if (err) {
-          console.log("failed to insert recordr: ", err)
+          console.log('failed to insert recordr: ', err);
           return err;
         }
-        console.log("document inserted");
-      })
+        console.log('document inserted');
+      });
     }
   });
-}
+};
 
 updateExplorer();
 app.use('/api', router);

@@ -1,5 +1,4 @@
-import { SET_TRANSACTION } from '../actions';
-import { RENDER_TRANSACTIONS_LIST} from "../actions";
+import { RENDER_TRANSACTIONS_LIST, SET_TRANSACTION } from '../actions';
 
 const initialState = {
   transactionsList: []

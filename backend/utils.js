@@ -1,7 +1,7 @@
 let libra = require('libra-grpc');
 
 function decode_hex(arg) {
-  return (new Buffer.from(arg, 'base64')).toString("hex");
+  return (new Buffer.from(arg, 'base64')).toString('hex');
 }
 
 function decode_int32le(arg) {
@@ -51,7 +51,7 @@ function decode(result) {
 
       let events;
       if (events_for_versions.events_for_version != null) {
-        events = events_for_versions.events_for_version[0].events[i]
+        events = events_for_versions.events_for_version[0].events[i];
         events = {
           ...events,
           access_path: {
@@ -59,7 +59,7 @@ function decode(result) {
             path: decode_hex(events.access_path.path)
           },
           event_data: decode_hex(events.event_data)
-        }
+        };
       }
 
       let rec_new = { date: t_date, version, raw, sender, hash, gas, arguments: program.argumentsList, module, events };//, events, modules
