@@ -3,7 +3,7 @@
 
 #transactionItem {
   background: $color-white;
-  border-bottom: $border-gray;
+  border-bottom: $border-gray1;
   display: flex;
   min-height: 145px;
   padding: 37px 18px 32px;
@@ -26,7 +26,7 @@
   }
 
   .column1 {
-    color: $color-blue3;
+    color: $color-blue5;
     width: 27%;
 
     span {
@@ -46,7 +46,7 @@
   }
 
   .column3 {
-    color: $color-blue3;
+    color: $color-blue5;
     width: 17%;
 
     .content {
@@ -57,7 +57,7 @@
   }
 
   .column4 {
-    color: $color-blue3;
+    color: $color-blue5;
     width: 20%;
   }
 

@@ -9,22 +9,22 @@ $color-dark2: #33343D;
 $color-dark1: #25233A;
 $color-black: #000;
 
-$color-blue1: #01058A;
-$color-blue2: #0054C7;
-$color-blue3: #1AA8E9;
-
+$color-blue1: #01072D;
+$color-blue2: #01058A;
+$color-blue3: #01346C;
+$color-blue4: #0054C7;
+$color-blue5: #1AA8E9;
 // gradient
-$grad-searchBar: radial-gradient(552.77px at 49.19% 51.45%, $color-blue2 0%, $color-blue1 100%);
+$grad-searchBar: radial-gradient(552.77px at 49.19% 51.45%, $color-blue4 0%, $color-blue2 100%);
+$grad-button: radial-gradient(106.61px at -25% -23.81%, $color-blue1 0%, $color-blue3 100%);
 
 // border
-$border-gray: 1px solid #E7E8F2;
+$border-gray1: 1px solid #E7E8F2;
 $border-gray2: 1px solid #E0E1E9;
 
 // box-shadow
 $box-shadow-hover: 0 5px 12px rgba(0, 0, 0, 0.1);
 
 // define
-$color-primary: $color-blue1;
+$color-primary: $color-blue2;
 $color-secondary: $color-light2;
-
-$color-logo: $color-dark1;

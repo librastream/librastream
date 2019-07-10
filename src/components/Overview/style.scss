@@ -4,7 +4,7 @@
 #overview {
   .searchBar {
     background: $grad-searchBar;
-    border: $border-gray;
+    border: $border-gray1;
     border-radius: 6px;
     margin-bottom: 85px;
     padding: 27px 45px 40px;
@@ -29,7 +29,7 @@
       position: relative;
 
       a {
-        background-color: $color-blue3;
+        background-color: $color-blue5;
         border-bottom-right-radius: 100px;
         border-top-right-radius: 100px;
         height: 100%;
@@ -56,7 +56,7 @@
 
       input {
         background-color: $color-white;
-        border: $border-gray;
+        border: $border-gray1;
         border-radius: 100px;
         color: $color-dark2;
         height: 45px;
