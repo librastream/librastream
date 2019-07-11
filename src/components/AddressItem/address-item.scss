@@ -1,0 +1,20 @@
+@import '../../styles/imports/index';
+
+#addressItem {
+  background: $color-white;
+  font-size: 14px;
+
+  .item {
+    border-bottom: $border-gray1;
+    min-height: 72px;
+    padding: 0 20px;
+  }
+
+  .title {
+    width: 36%;
+  }
+
+  .content {
+    width: 64%;
+  }
+}
