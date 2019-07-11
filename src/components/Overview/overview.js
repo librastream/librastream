@@ -23,9 +23,9 @@ class Overview extends Component {
             </div>
           </div>
 
-          {/* section2 - card */}
-          <div className="card">
-            <div className="card__header">
+          {/* section2 - table */}
+          <div className="table">
+            <div className="table__header">
               <h5 className="title">Transactions</h5>
               <div className="subtitle">More than 500,000 transactions found</div>
               {/*<svg width="18" height="5" viewBox="0 0 18 5" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
@@ -34,14 +34,14 @@ class Overview extends Component {
               {/*        fill="#A7A9C0"/>*/}
               {/*</svg>*/}
             </div>
-            <div className="card__body">
+            <div className="table__body">
               <TransactionItem/>
               <TransactionItem/>
               <TransactionItem/>
               <TransactionItem/>
               <TransactionItem/>
             </div>
-            <div className="card__footer">
+            <div className="table__footer">
               <div className="status">
                 <input className="status__count" type="number"/>
                 <div className="status__info">Show 10 per second.</div>

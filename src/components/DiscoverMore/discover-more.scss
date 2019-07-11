@@ -1,0 +1,14 @@
+@import '../../styles/imports/index';
+
+#discoverMore {
+  .card {
+    box-sizing: border-box;
+    //margin-right: 55px;
+    &__img {
+      position: absolute;
+      width: 74px;
+      height: 74px;
+      text-align: center;
+    }
+  }
+}

@@ -10,8 +10,8 @@ class AddressOverview extends Component {
       <div id="addressOverview">
         <div className="container">
           <div className="mb-45 d-flex">
-            <div className="card mr-30 w-75">
-              <div className="card__header">
+            <div className="table mr-30 w-75">
+              <div className="table__header">
                 <h5 className="title">Address Overview</h5>
                 <div className="subtitle">
                   Addresses are identifiers which you use to
@@ -21,14 +21,14 @@ class AddressOverview extends Component {
               <AddressItem/>
             </div>
 
-            <div className="card w-50">
+            <div className="table w-50">
               <QRCode/>
             </div>
           </div>
 
-          {/* section2 - card */}
-          <div className="card">
-            <div className="card__header">
+          {/* section2 - table */}
+          <div className="table">
+            <div className="table__header">
               <h5 className="title">Transactions</h5>
               <div className="subtitle">More than 500,000 transactions found</div>
               {/*<svg width="18" height="5" viewBox="0 0 18 5" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
@@ -37,14 +37,14 @@ class AddressOverview extends Component {
               {/*        fill="#A7A9C0"/>*/}
               {/*</svg>*/}
             </div>
-            <div className="card__body">
+            <div className="table__body">
               <TransactionItem/>
               <TransactionItem/>
               <TransactionItem/>
               <TransactionItem/>
               <TransactionItem/>
             </div>
-            <div className="card__footer">
+            <div className="table__footer">
               <div className="status">
                 <input className="status__count" type="number"/>
                 <div className="status__info">Show 10 per second.</div>

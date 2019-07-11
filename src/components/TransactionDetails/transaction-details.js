@@ -7,12 +7,12 @@ class TransactionDetails extends Component {
     return (
       <div id="transactionDetails">
         <div className="container">
-          <div className="card">
-            <div className="card__header">
+          <div className="table">
+            <div className="table__header">
               <h5 className="title">Transaction Details</h5>
               <div className="subtitle">Back</div>
             </div>
-            <div className="card__body">
+            <div className="table__body">
               <div className="item flex-center-y">
                 <h4 className="title text-dark1 a26">Version</h4>
                 <div className="content">
@@ -92,7 +92,7 @@ class TransactionDetails extends Component {
                 </div>
               </div>
             </div>
-            <div className="card__footer">
+            <div className="table__footer">
               <span className="text-blue6 flex-center-y">View More</span>
 
             </div>

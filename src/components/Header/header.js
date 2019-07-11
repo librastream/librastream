@@ -36,6 +36,9 @@ export default () => (
       <Link to="/transaction-details">
         <h4 className="text-secondary p-0-20">TransactionDetails</h4>
       </Link>
+      <Link to="/discover-more">
+        <h4 className="text-secondary p-0-20">DiscoverMore</h4>
+      </Link>
     </div>
 
     {/* right side - features */}

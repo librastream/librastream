@@ -4,7 +4,7 @@
   font-family: 'Helvetica Neue Medium';
   font-style: normal;
   font-weight: normal;
-  src: local('Helvetica Neue Medium'), url('../assets/fonts/HelveticaNeueMedium.woff') format('woff');
+  src: local('Helvetica Neue Medium'), url('../assets/fonts/HelveticaNeue.ttc') format('woff');
 }
 
 html, body {
@@ -144,8 +144,8 @@ svg {
   width: 100%;
 }
 
-// card
-.card {
+// table
+.table {
   background: #fff;
   border-radius: 6px;
   border: $border-gray1;
@@ -223,6 +223,15 @@ svg {
   }
 }
 
+// card
+.card {
+  box-shadow: 0px 8px 44px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  border: 1px solid #E7E8F2;
+  background-color: $color-white;
+  height: 100px;
+  position: relative;
+}
 //
 //.text-lightblue {
 //  color: $color-blue3;
@@ -236,7 +245,7 @@ svg {
 //  opacity: .26;
 //}
 //
-//.card {
+//.table {
 //    svg {
 //      position: absolute;
 //      right: 16px;
