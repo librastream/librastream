@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './transactionitem.scss';
+import './transaction-item.scss';
 
 export default () => (
   <div id="transactionItem" className="d-flex">
