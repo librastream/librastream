@@ -4,7 +4,7 @@ import Overview from './components/Overview/overview';
 import Header from './components/Header/header';
 import Footer from './components/Footer/footer';
 import AddressOverview from './components/AddressOverview/address-overview';
-import TransactionDetails from './components/TransactionDetails';
+import TransactionDetails from './components/TransactionDetails/transaction-details';
 
 class App extends Component {
   render() {

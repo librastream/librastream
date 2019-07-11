@@ -1,0 +1,39 @@
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
+
+#transactionDetails {
+  background-color: $color-light1;
+
+  .body {
+  }
+
+  .body > .state {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
+    div:first-of-type {
+      margin-right: 50px;
+
+      svg {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .card__body {
+    .item {
+      border-bottom: $border-gray1;
+      min-height: 72px;
+      padding: 0 20px;
+    }
+
+    .title {
+      width: 20%;
+    }
+
+    .content {
+      width: 80%;
+    }
+  }
+}

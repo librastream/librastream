@@ -10,7 +10,7 @@ class AddressOverview extends Component {
       <div id="addressOverview">
         <div className="container">
           <div className="mb-45 d-flex">
-            <div className="card mr-30 w-50">
+            <div className="card mr-30 w-75">
               <div className="card__header">
                 <h5 className="title">Address Overview</h5>
                 <div className="subtitle">

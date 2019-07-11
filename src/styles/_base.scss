@@ -57,6 +57,10 @@ svg {
   color: $color-dark1;
 }
 
+.text-dark2 {
+  color: $color-dark2;
+}
+
 .text-blue1 {
   color: $color-blue1;
 }
@@ -67,6 +71,10 @@ svg {
 
 .text-blue6 {
   color: $color-blue6;
+}
+
+.text-black {
+  color: $color-black;
 }
 
 .a26 {
@@ -118,6 +126,7 @@ svg {
 .container {
   padding: 35px 0 60px;
   max-width: 1120px;
+  min-height: calc(100vh - 337px);
 }
 
 ////
