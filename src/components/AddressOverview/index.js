@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TransactionItem from '../TransactionItem';
+import TransactionItem from '../TransactionItem/transctonitem';
 import AddressItem from '../AddressItem';
 import QRCode from '../QRCode';
 import './style.scss';

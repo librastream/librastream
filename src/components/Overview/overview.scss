@@ -1,39 +1,17 @@
-@import '../../styles/imports/variables';
-@import '../../styles/typography';
+@import '../../styles/imports/index';
 
 #overview {
   background-color: $color-light1;
 
-  .search {
+  .searchbar {
     background: $grad-searchBar;
     border: $border-gray1;
     border-radius: 6px;
-    padding: 27px 45px 40px;
-    margin-bottom: 85px;
     height: 131px;
+    margin-bottom: 30px;
 
-    .search__bar {
-      position: relative;
-
-      a {
-        background-color: $color-blue5;
-        border-bottom-right-radius: 8px;
-        border-top-right-radius: 8px;
-        height: 100%;
-        position: absolute;
-        right: 0;
-        text-align: center;
-        min-width: 164px;
-
-        .search__btn {
-          color: $color-white;
-          line-height: 2.8;
-        }
-
-        &:hover {
-          text-decoration: none;
-        }
-      }
+    &__content {
+      height: 45px;
 
       svg {
         left: 16px;
@@ -41,20 +19,30 @@
         top: 12px;
       }
 
-      input {
+      .search__input {
         background-color: $color-white;
         border: $border-gray1;
-        border-radius: 8px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
         color: $color-dark2;
-        height: 45px;
-        padding-left: 50px;
-        width: 100%;
+
+        &:focus {
+          outline: none;
+        }
 
         &::placeholder {
-          color: $color-light3;
-
+          color: $color-secondary;
         }
       }
+
+      .search__btn {
+        background-color: $color-blue6;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
+        min-width: 164px;
+        cursor: pointer;
+      }
     }
+
   }
 }
