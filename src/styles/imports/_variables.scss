@@ -1,11 +1,11 @@
 // variables
-
 // color
 $color-white: #FFF;
 $color-light1: #FAFAFd;
 $color-light2: #EEEFF7;
-$color-light3: #A7A9C0;
-$color-light4: #8B8C99;
+$color-light3: #C2C2C5;
+$color-light4: #A7A9C0;
+$color-light5: #8B8C99;
 $color-dark2: #33343D;
 $color-dark1: #25233A;
 $color-black: #000;
@@ -27,7 +27,8 @@ $border-gray2: 1px solid #E0E1E9;
 
 // box-shadow
 $box-shadow-hover: 0 5px 12px rgba(0, 0, 0, 0.1);
+$box-shadow-footer: 0px 4px 30px rgba(0, 0, 0, 0.13);
 
 // define
 $color-primary: $color-blue2;
-$color-secondary: $color-light3;
+$color-secondary: $color-light4;

@@ -1,29 +1,37 @@
-@import '../../styles/imports/variables';
-@import '../../styles/typography';
+@import '../../styles/imports/index';
 
 #footer {
-  .mb-45 {
-    margin-bottom: 45px;
+  background: $color-white;
+  border-top: $border-gray1;
+  box-shadow: $box-shadow-footer;
+
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
-  .mr-30 {
-    margin-right: 30px;
-  }
+  .content {
+    border-bottom: $border-gray1;
+    height: 181px;
 
-  .body {
-  }
+    .section {
+      &__main {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
 
-  .body > .state {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-
-    div:first-of-type {
-      margin-right: 50px;
-
-      svg {
-        margin-right: 12px;
+      &__sec {
+        font-size: 14px;
+      }
+      .link > svg {
+        margin-left: 8px;
+        margin-right: 0;
+        cursor: pointer;
       }
     }
+  }
+
+  .info {
+    height: 84px;
   }
 }

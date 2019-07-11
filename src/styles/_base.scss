@@ -23,6 +23,15 @@ svg {
   cursor: pointer;
 }
 
+// font
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
 // color
 .text-primary {
   color: $color-primary;
@@ -36,8 +45,20 @@ svg {
   color: $color-light2;
 }
 
+.text-light3 {
+  color: $color-light3;
+}
+
+.text-light4 {
+  color: $color-light4;
+}
+
 .text-dark1 {
   color: $color-dark1;
+}
+
+.text-blue1 {
+  color: $color-blue1;
 }
 
 .text-blue5 {
@@ -51,6 +72,7 @@ svg {
 .a26 {
   opacity: .26;
 }
+
 // spacing
 
 .flex-center {
@@ -87,6 +109,10 @@ svg {
 
 .p-10-0 {
   padding: 10px 0;
+}
+
+.m-r-7 {
+  margin-right: 7px;
 }
 
 .container {
@@ -137,6 +163,7 @@ svg {
 
   &__body {
     overflow-y: auto;
+
     &::-webkit-scrollbar {
       width: 11px;
     }
@@ -150,7 +177,7 @@ svg {
     &::-webkit-scrollbar-thumb {
       background-clip: content-box;
       background-color: $color-secondary;
-      border: 2px   solid transparent;
+      border: 2px solid transparent;
       border-radius: 100px;
     }
   }
