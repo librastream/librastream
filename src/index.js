@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
+import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import App from './App';
+import { Provider } from 'react-redux';
 
-import { loadTransactionsList } from './store/actions';
-import rootSaga from './store/sagas';
-import transactionsApp from './store/reducers';
 import * as serviceWorker from './serviceWorker';
+import { loadTransactionsList } from './store/actions';
+import transactionsApp from './store/reducers';
+import rootSaga from './store/sagas';
+import App from './App';
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './header.scss';
 
 export default () => (
@@ -27,18 +27,18 @@ export default () => (
 
     {/* center side - navbar */}
     <div className="navbar mx-auto p-0 h-100">
-      <Link className="selected" to="/">
+      <NavLink activeClassName="selected" exact to="/">
         <h4 className="color-secondary p-0-20">Overview</h4>
-      </Link>
-      <Link to="/address-overview">
+      </NavLink>
+      <NavLink activeClassName="selected" exact to="/address-overview">
         <h4 className="color-secondary p-0-20">AddressOverview</h4>
-      </Link>
-      <Link to="/transaction-details">
+      </NavLink>
+      <NavLink activeClassName="selected" exact to="/transaction-details">
         <h4 className="color-secondary p-0-20">TransactionDetails</h4>
-      </Link>
-      <Link to="/discover-more">
+      </NavLink>
+      <NavLink activeClassName="selected" exact to="/discover-more">
         <h4 className="color-secondary p-0-20">DiscoverMore</h4>
-      </Link>
+      </NavLink>
     </div>
 
     {/* right side - features */}
