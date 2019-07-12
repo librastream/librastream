@@ -9,10 +9,10 @@ const NavigationBar = styled.div`
 
 export default () => (
   <NavigationBar>
-    <Link className="btn btn-primary" to="/list">
+    <Link className="btn btn-primary" exact to="/list">
       Transactions List
     </Link>
-    <Link className="btn btn-secondary" to="/new-item">
+    <Link className="btn btn-secondary" exact to="/new-item">
       Add New
     </Link>
   </NavigationBar>

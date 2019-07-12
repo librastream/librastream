@@ -2,9 +2,39 @@ import React, { Component } from 'react';
 import TransactionItem from '../TransactionItem/transaction-item';
 import Switch from '../SwitchButton/switch-button';
 import './overview.scss';
+import { forEach } from 'react-bootstrap/es/utils/ElementChildren';
 
 class Overview extends Component {
+  transactionTable = [];
+  URL = 'ws://localhost:8999';
+  ws = new WebSocket(this.URL);
+  componentDidMount() {
+    console.log("Start");
+    this.ws.onopen = () => {
+      console.log("connected");
+    };
+    this.ws.onmessage = (message) => {
+      console.log(message);
+      let server_data = JSON.parse(message.data);
+      server_data.data.forEach((elem, idx, arry) => {
+          this.transactionTable.push(elem);
+      });
+      this.forceUpdate();
+    };
+
+    console.log("End");
+  }
+
   render() {
+    let items = [];
+    this.transactionTable.forEach((elem, idx, arry) => {
+      items.push(<TransactionItem record={elem} key={elem.id}/>);
+    });
+    for (let elem of this.transactionTable) {
+      console.log("elem", elem);
+      console.log(items);
+    }
+
     return (
       <div id="overview">
         <div className="container">
@@ -40,11 +70,7 @@ class Overview extends Component {
               {/*</svg>*/}
             </div>
             <div className="table__body">
-              <TransactionItem/>
-              <TransactionItem/>
-              <TransactionItem/>
-              <TransactionItem/>
-              <TransactionItem/>
+              {items}
             </div>
             <div className="table__footer">
               <div className="status">

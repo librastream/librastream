@@ -25,19 +25,32 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
-
   //connection is up, let's add a simple simple event
-  ws.on('message', (message) => {
-
-    //log the received message and send it back to the client
-    ws.send(`Hello, you sent -> ${message}`);
-
-  });
+  let socket_json = [];
+  for (let i = 0; i < 1; i++)
+    socket_json.push({
+      id: i,
+      txn: '1111111111111',
+      age: 20,
+      from: '0x6d92958cdijeijd883646t2sdxjdi2',
+      to: '0x6d92958cdijeijd883646t2sdxjdi2',
+      value: '1 Libra'
+    });
+    ws.send(JSON.stringify({data: socket_json, type: 'init'}));
 
   //send immediatly a feedback to the incoming connection  
   let i = 0;
-  setInterval(() => {
-    ws.send('Hello, you sent -> i: ' + i);
+  // setInterval(() => {
+  //   let socket_json = {
+  //     socket_name: 'update',
+  //     Txn: '123456789101',
+  //     Age: i + 20,
+  //     From: '0x6d92958cdijeijd883646t2sdxjdi2',
+  //     To: '0x6d92958cdijeijd883646t2sdxjdi2',
+  //     Value: '1 Libra'
+  //   };
+
+    // ws.send(JSON.stringify(socket_json));
     i += 1;
   }, 2000);
 
@@ -50,7 +63,6 @@ app.use('/api', router);
 server.listen(process.env.PORT || 8999, () => {
   console.log(`Server started on port ${server.address().port} :)`);
 });
-
 
 
 if (!process.env.DATABASE) {
@@ -66,20 +78,18 @@ if (!process.env.SERVER_PORT) {
 var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
 
-
-
 (async () => {
   // Use connect method to connect to the server
-  MongoClient.connect(process.env.DATABASE, function (err, client) {
+  MongoClient.connect(process.env.DATABASE, function(err, client) {
     assert.equal(null, err);
-    console.log("Connected successfully to server");
+    console.log('Connected successfully to server');
 
     (async () => {
-      const collection = client.db("explorer").collection("transactions");
-      const txCurrentCollection = await collection.find({}).sort({ "version": -1 }).limit(1).toArray();
+      const collection = client.db('explorer').collection('transactions');
+      const txCurrentCollection = await collection.find({}).sort({ 'version': -1 }).limit(1).toArray();
       let txCurrent = txCurrentCollection[0] != undefined ? txCurrentCollection[0].version + 1 : 1;
 
-      let txLatest = txCurrent+1;
+      let txLatest = txCurrent + 1;
       let txPrevious = 0;
 
       //minimum interval: 120 or duplicate results
@@ -102,14 +112,14 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
 
               if (txPrevious == 1 || txLatest > txPrevious) {
-                console.log("adding item: ", txLatest)
+                console.log('adding item: ', txLatest);
                 collection.insertMany(arry_decoded)
-                .catch(err=>{
-                  console.log("couldn't insert to DB")
-                });
+                  .catch(err => {
+                    console.log('couldn\'t insert to DB');
+                  });
               }
-            }
-            
+            };
+
             libraClient.request('get_transactions', params)
               .then((err, result) => {
 
@@ -117,9 +127,9 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
                 if (err) {
                   if (err != undefined && err.txn_list_with_proof != undefined) {
                     insert(err);
-                    console.log("error, but we can insert")
+                    console.log('error, but we can insert');
                   } else {
-                    console.log("Error: txLatest: ", txLatest)
+                    console.log('Error: txLatest: ', txLatest);
                     console.log(JSON.stringify(err));
                   }
                 } else {
@@ -136,7 +146,7 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
               })
               .catch(err => {
-                console.log("asycn error: ", err)
+                console.log('asycn error: ', err);
               });
 
             //Pull the latest db changes, and broacast to websocket
@@ -144,8 +154,7 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
           }, 1190);
 
 
-
-        })
+        });
       };
       (async () => {
         while (true) {
@@ -167,17 +176,15 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 })();
 
 
-
-
 let updateExplorer = () => {
-  return
-  let start_version = db.collection("transactions").find({});
-  start_version.sort({ "version": -1 }).limit(1).exec((error, document) => {
-    console.log(document)
+  return;
+  let start_version = db.collection('transactions').find({});
+  start_version.sort({ 'version': -1 }).limit(1).exec((error, document) => {
+    console.log(document);
   });
 
 
-  console.log(a)
+  console.log(a);
 
   return;
 
@@ -187,13 +194,13 @@ let updateExplorer = () => {
     fetch_events: true
   };
 
-  client.request('get_transactions', params, function (err, result) {
+  client.request('get_transactions', params, function(err, result) {
     let arry_decoded;
     arry_decoded = decode(result);
     for (let elem in arry_decoded) {
       console.log(arry_decoded[elem]);
 
-      db.collection('transactions').insertOne(arry_decoded[elem], function (err, res) {
+      db.collection('transactions').insertOne(arry_decoded[elem], function(err, res) {
         if (err) {
           console.log('failed to insert recordr: ', err);
           return err;
