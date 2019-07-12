@@ -246,6 +246,7 @@ svg {
   border-radius: 6px;
   height: calc(100% - 55px);
   position: relative;
+
   &:hover {
     box-shadow: $box-shadow-card;
   }

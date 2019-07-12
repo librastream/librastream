@@ -16,13 +16,14 @@ class TransactionDetails extends Component {
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">Version</h4>
                 <div className="content">
-                  <span  className="">1</span>
+                  <span className="">1</span>
                 </div>
               </div>
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">Transaction Hash</h4>
                 <div className="content">
-                  <span className="color-black font-weight-bold">0x5c06bdf4550ae6a1709ed2905a222d8ed51282bcdf20439d3f4e27e320d0396e</span>
+                  <span
+                    className="color-black font-weight-bold">0x5c06bdf4550ae6a1709ed2905a222d8ed51282bcdf20439d3f4e27e320d0396e</span>
                 </div>
               </div>
               <div className="item flex-center-y">
