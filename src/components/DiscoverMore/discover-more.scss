@@ -1,14 +1,31 @@
 @import '../../styles/imports/index';
 
 #discoverMore {
+  h4 {
+    margin-bottom: 24px;
+    p {
+      margin-bottom: 15px;
+    }
+  }
   .card {
     box-sizing: border-box;
-    //margin-right: 55px;
-    &__img {
+    margin-bottom: 55px;
+    padding-top: 60px;
+    position: relative;
+
+    &__header > img {
+      //height: 122px;
       position: absolute;
-      width: 74px;
-      height: 74px;
       text-align: center;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &__footer {
+      h4 {
+        margin-bottom: 20px;
+      }
     }
   }
 }

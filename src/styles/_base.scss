@@ -24,6 +24,10 @@ svg {
 }
 
 // font
+.fs-22 {
+  font-size: 22px;
+}
+
 .fs-18 {
   font-size: 18px;
 }
@@ -63,6 +67,10 @@ svg {
 
 .text-blue1 {
   color: $color-blue1;
+}
+
+.text-blue2 {
+  color: $color-blue2;
 }
 
 .text-blue5 {
@@ -115,8 +123,16 @@ svg {
   padding: 0 45px;
 }
 
+.p-r-55 {
+  padding-right: 55px;
+}
+
 .p-10-0 {
   padding: 10px 0;
+}
+
+.m-t-55 {
+  margin-top: 55px;
 }
 
 .m-r-7 {
@@ -223,13 +239,13 @@ svg {
   }
 }
 
-// card
+  // card
 .card {
-  box-shadow: 0px 8px 44px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
-  border: 1px solid #E7E8F2;
   background-color: $color-white;
-  height: 100px;
+  border: $border-gray1;
+  border-radius: 6px;
+  box-shadow: $box-shadow-card;
+  height: calc(100% - 55px);
   position: relative;
 }
 //
@@ -237,13 +253,7 @@ svg {
 //  color: $color-blue3;
 //}
 //
-//.opacity-1 {
-//  opacity: 1;
-//}
-//
-//.opacity-26 {
-//  opacity: .26;
-//}
+
 //
 //.table {
 //    svg {
