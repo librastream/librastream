@@ -31,6 +31,7 @@
         }
 
         &::placeholder {
+          font-size: 14px;
           color: $color-secondary;
         }
       }
@@ -43,6 +44,12 @@
         cursor: pointer;
       }
     }
-
+  }
+  .table {
+    &__footer {
+      bottom: 0;
+      position: sticky;
+      z-index: 1020;
+    }
   }
 }

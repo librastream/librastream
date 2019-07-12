@@ -19,7 +19,7 @@ export default () => (
                  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABcCAYAAAD0zUKRAAADbUlEQVR4nO2bT4iNURjGfyNJmjJNmqwsZEFp8i8LScICZWOhLBTKSmE1SiQrC8pCspAkSRqR5E+EktTQMCFJkpVkJUmSvDrNud3Pbe7MOfd+7zczeX71Nov73XPO95zvnPuc72kQQgghhBBCCCGEEEKIf+nI1cPMWpFwDrAMWArMB7qATuA38BX4ArwChoDHwK+JNk8dHXlSTXUbyTBrgF1RzEWJ33kaxT0HvHYeX5E+YCZwCvhUYb/DhCc2oVaY2Q0ze2GtE7572swWJvbZTi0pjHXQzI6YWU+xvYkgbF+bgjYS2jplZrOdRJ1uZrdH6PeZmR0ws+7xFnaWmfWXLGqRATPb6SDs2YR+9+TqVNYeOws4D2wsqb2RWA5MAzYAh4E3JbR5DFgyxjWhz+8l9DU6TZ7Um05PaTPCqjgYl3ErT+lUMzuZuLqujcdWEG7sesWiFnloZluiUKmi9kaxUngRf9iydWrXx54A9mU2Ebzqj+hfg4/tAaZn2LGReAT0A3eBd02uCT56a7SAKX2FcV4EjlOxj90OrE68NgzyPXAJeAJ8bvg8CLsSWBtvfHnmWFbFGoqHi7fAz3h/oe15ca/MmbyXNVErIS6nudHvpS7XjRlLtStatgH3jaQ59+M4KvexFxIHeLFxgBnVE/2rl31rxsP44FC1sJsTbzb4wykl+Mw1ZnZvPEVtRdgpLWi7OOGaK8Bu4E8L7TfyANgEHIp7qBd3gB3AB8c+mhNncP4oyzTMerfT8bPX4XQX2jo6lieuSthahRckZwo3Gv6ucxK1WKvN7HIJL3nCFrM+pc9cynofG46Fe6ON2t/+9CUTLNq26FHHOprWqFm/8FryVmpHuT62qhfd3nRGH9sLLIiHjq74G/ItVvC2g8Bz4GPueP5XYd3JFbYVVyAk7PghYZ3wDhNrTPqUNheltHWU0jqUUlqHUkqrlNYHpbQVoJTWGaW0BRpT2rCNzFBKW0cpbZnE5aSU1klYpbQOwiqlTUApbR2ltEpp/UoprTNKaZ1RSjtZUUo7QZCwTkhYJ5TSOqGUto5SWodSSutQSmmV0vqglLYClNI6o5S2gP6XdgyU0pZJXE5KaZ2EVUrrIKxS2gS8UtqrSmkziTOolNZJ2FoppW2CUtpElNJOkJRWCPHfI4QQQgghhBBCCPEPwF8l4mZpJAndJgAAAABJRU5ErkJggg=="/>
         </defs>
       </svg>
-      <h3 className="text-dark1 font-weight-bold d-inline-block align-middle">LibraStream.io</h3>
+      <h3 className="color-dark1 font-weight-bold d-inline-block align-middle">LibraStream.io</h3>
       {/*<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
       {/*  <path d="M7 1L1 7L7 13" stroke="#A7A9C0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>*/}
       {/*</svg>*/}
@@ -28,25 +28,25 @@ export default () => (
     {/* center side - navbar */}
     <div className="navbar mx-auto p-0 h-100">
       <Link className="selected" to="/">
-        <h4 className="text-secondary p-0-20">Overview</h4>
+        <h4 className="color-secondary p-0-20">Overview</h4>
       </Link>
       <Link to="/address-overview">
-        <h4 className="text-secondary p-0-20">AddressOverview</h4>
+        <h4 className="color-secondary p-0-20">AddressOverview</h4>
       </Link>
       <Link to="/transaction-details">
-        <h4 className="text-secondary p-0-20">TransactionDetails</h4>
+        <h4 className="color-secondary p-0-20">TransactionDetails</h4>
       </Link>
       <Link to="/discover-more">
-        <h4 className="text-secondary p-0-20">DiscoverMore</h4>
+        <h4 className="color-secondary p-0-20">DiscoverMore</h4>
       </Link>
     </div>
 
     {/* right side - features */}
     <div className="setting d-flex p-10-0 h-100">
-      <div className="setting__item flex-center-y text-secondary p-0-20 h-100">
+      <div className="setting__item flex-center-y color-secondary p-0-20 h-100">
         <h4 className="cursor-pointer">Log in</h4>
       </div>
-      <div className="setting__item flex-center-y text-secondary p-0-20 h-100">
+      <div className="setting__item flex-center-y color-secondary p-0-20 h-100">
         <div className="button-primary signup-btn">Sign up</div>
       </div>
       {/*<a href="https://librastream.io" className="navbar__item">*/}

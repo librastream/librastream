@@ -20,7 +20,7 @@ export default () => (
                        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABcCAYAAAD0zUKRAAADbUlEQVR4nO2bT4iNURjGfyNJmjJNmqwsZEFp8i8LScICZWOhLBTKSmE1SiQrC8pCspAkSRqR5E+EktTQMCFJkpVkJUmSvDrNud3Pbe7MOfd+7zczeX71Nov73XPO95zvnPuc72kQQgghhBBCCCGEEEKIf+nI1cPMWpFwDrAMWArMB7qATuA38BX4ArwChoDHwK+JNk8dHXlSTXUbyTBrgF1RzEWJ33kaxT0HvHYeX5E+YCZwCvhUYb/DhCc2oVaY2Q0ze2GtE7572swWJvbZTi0pjHXQzI6YWU+xvYkgbF+bgjYS2jplZrOdRJ1uZrdH6PeZmR0ws+7xFnaWmfWXLGqRATPb6SDs2YR+9+TqVNYeOws4D2wsqb2RWA5MAzYAh4E3JbR5DFgyxjWhz+8l9DU6TZ7Um05PaTPCqjgYl3ErT+lUMzuZuLqujcdWEG7sesWiFnloZluiUKmi9kaxUngRf9iydWrXx54A9mU2Ebzqj+hfg4/tAaZn2LGReAT0A3eBd02uCT56a7SAKX2FcV4EjlOxj90OrE68NgzyPXAJeAJ8bvg8CLsSWBtvfHnmWFbFGoqHi7fAz3h/oe15ca/MmbyXNVErIS6nudHvpS7XjRlLtStatgH3jaQ59+M4KvexFxIHeLFxgBnVE/2rl31rxsP44FC1sJsTbzb4wykl+Mw1ZnZvPEVtRdgpLWi7OOGaK8Bu4E8L7TfyANgEHIp7qBd3gB3AB8c+mhNncP4oyzTMerfT8bPX4XQX2jo6lieuSthahRckZwo3Gv6ucxK1WKvN7HIJL3nCFrM+pc9cynofG46Fe6ON2t/+9CUTLNq26FHHOprWqFm/8FryVmpHuT62qhfd3nRGH9sLLIiHjq74G/ItVvC2g8Bz4GPueP5XYd3JFbYVVyAk7PghYZ3wDhNrTPqUNheltHWU0jqUUlqHUkqrlNYHpbQVoJTWGaW0BRpT2rCNzFBKW0cpbZnE5aSU1klYpbQOwiqlTUApbR2ltEpp/UoprTNKaZ1RSjtZUUo7QZCwTkhYJ5TSOqGUto5SWodSSutQSmmV0vqglLYClNI6o5S2gP6XdgyU0pZJXE5KaZ2EVUrrIKxS2gS8UtqrSmkziTOolNZJ2FoppW2CUtpElNJOkJRWCPHfI4QQQgghhBBCCPEPwF8l4mZpJAndJgAAAABJRU5ErkJggg=="/>
               </defs>
             </svg>
-            <h3 className="text-dark1 font-weight-bold d-inline-block align-middle">LibraStream.io</h3>
+            <h3 className="color-dark1 font-weight-bold d-inline-block align-middle">LibraStream.io</h3>
           </div>
           <div className="section_sec link d-flex justify-content-end">
             <svg width="10" height="19" viewBox="0 0 10 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,30 +56,30 @@ export default () => (
           </div>
         </div>
         <div className="section">
-          <div className="section__main text-light3">Services</div>
-          <div className="section__sec text-light3">Coming soon</div>
+          <div className="section__main color-light3">Services</div>
+          <div className="section__sec color-light3">Coming soon</div>
         </div>
         <div className="section">
-          <div className="section__main text-light3">Data</div>
-          <div className="section__sec text-light3">Coming soon</div>
+          <div className="section__main color-light3">Data</div>
+          <div className="section__sec color-light3">Coming soon</div>
         </div>
         <div className="section">
-          <div className="section__main text-light3">Learn</div>
-          <div className="section__sec text-light3">Coming soon</div>
+          <div className="section__main color-light3">Learn</div>
+          <div className="section__sec color-light3">Coming soon</div>
         </div>
         <div className="section">
-          <div className="section__main text-light3">Contact Us</div>
-          <div className="section__sec text-light3">Feedback</div>
+          <div className="section__main color-light3">Contact Us</div>
+          <div className="section__sec color-light3">Feedback</div>
         </div>
       </div>
-      <div className="info text-light3 flex-center-y justify-content-between">
+      <div className="info color-light3 flex-center-y justify-content-between">
         <div className="flex-center-y">
           <h5>Librastream.io Copyright 2019. All Rights Reserved. &nbsp;</h5>
           <h5>Designed by &nbsp;</h5>
-          <h5 className="text-primary cursor-pointer">ScottKennedyDesigns</h5>
+          <h5 className="color-primary cursor-pointer">ScottKennedyDesigns</h5>
         </div>
         <div className="flex-center-y">
-          <span className="fs-18 text-light4 m-r-7">Donate</span>
+          <span className="fs-18 color-light4 m-r-7">Donate</span>
 
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

@@ -17,7 +17,7 @@
     width: 37px;
     height: 20px;
     border-radius: 999px;
-    background-color: $color-blue3;
+    background-color: $color-white;
     -webkit-transition-duration: .4s;
     transition-duration: .4s;
     -webkit-transition-property: background-color, box-shadow;
@@ -28,7 +28,7 @@
 
   input[type="checkbox"].switch:checked + div {
     width: 37px;
-    background-color: $color-white;
+    background-color: $color-blue3;
   }
 
   input[type="checkbox"].switch + div {

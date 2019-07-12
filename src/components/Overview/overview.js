@@ -16,7 +16,9 @@ class Overview extends Component {
                       d="M16 14.6L19.7 18.3C20.1 18.7 20.1 19.3 19.7 19.7C19.5 19.9 19.2 20 19 20C18.8 20 18.5 19.9 18.3 19.7L14.6 16C13.1 17.3 11.1 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9C18 11.1 17.2 13.1 16 14.6ZM9 2C5.1 2 2 5.1 2 9C2 12.9 5.1 16 9.1 15.9C11 15.9 12.7 15.2 14 13.9C15.2 12.7 16 10.9 16 9C16 5.1 12.9 2 9 2Z"
                       fill="#A7A9C0"/>
               </svg>
-              <input className="search__input p-0-45 w-100" type="text"/>
+              <input className="search__input p-0-45 w-100"
+                     type="text"
+                     placeholder="Search by Verson / Address / Hash"/>
               <a className="search__btn text-white flex-center h-100">
                 Search
               </a>

@@ -14,19 +14,19 @@ class TransactionDetails extends Component {
             </div>
             <div className="table__body">
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">Version</h4>
+                <h4 className="title color-dark1 a26">Version</h4>
                 <div className="content">
                   <span  className="">1</span>
                 </div>
               </div>
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">Transaction Hash</h4>
+                <h4 className="title color-dark1 a26">Transaction Hash</h4>
                 <div className="content">
-                  <span className="text-black font-weight-bold">0x5c06bdf4550ae6a1709ed2905a222d8ed51282bcdf20439d3f4e27e320d0396e</span>
+                  <span className="color-black font-weight-bold">0x5c06bdf4550ae6a1709ed2905a222d8ed51282bcdf20439d3f4e27e320d0396e</span>
                 </div>
               </div>
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">Status</h4>
+                <h4 className="title color-dark1 a26">Status</h4>
                 <div className="content">
                   <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -37,26 +37,26 @@ class TransactionDetails extends Component {
                 </div>
               </div>
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">Timestamp</h4>
+                <h4 className="title color-dark1 a26">Timestamp</h4>
                 <div className="content">
                   <span>4 days 17 hrs ago (Jun-20-2019 10:27:52 PM +UTC)</span>
                 </div>
               </div>
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">From</h4>
-                <div className="content text-blue6">
+                <h4 className="title color-dark1 a26">From</h4>
+                <div className="content color-blue6">
                   <span>0x63d509f7152769ddf162ed048b83719fe1e31080</span>
                 </div>
               </div>
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">To</h4>
-                <div className="content text-blue6">
+                <h4 className="title color-dark1 a26">To</h4>
+                <div className="content color-blue6">
                   <span>0x63d509f7152769ddf162ed048b83719fe1e31080</span>
-                  <span className="text-dark2">&nbsp;&nbsp;&nbsp; - Contract -</span>
+                  <span className="color-dark2">&nbsp;&nbsp;&nbsp; - Contract -</span>
                 </div>
               </div>
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">Value</h4>
+                <h4 className="title color-dark1 a26">Value</h4>
                 <div className="content">
                   <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="23" height="23" rx="4" fill="#01058A"/>
@@ -70,11 +70,11 @@ class TransactionDetails extends Component {
                     </defs>
                   </svg>
                   <span>15 Libra</span>
-                  <span className="text-blue6">&nbsp;&nbsp;&nbsp; $ 350</span>
+                  <span className="color-blue6">&nbsp;&nbsp;&nbsp; $ 350</span>
                 </div>
               </div>
               <div className="item flex-center-y">
-                <h4 className="title text-dark1 a26">Transaction Fee</h4>
+                <h4 className="title color-dark1 a26">Transaction Fee</h4>
                 <div className="content">
                   <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="23" height="23" rx="4" fill="#01058A"/>
@@ -88,12 +88,12 @@ class TransactionDetails extends Component {
                     </defs>
                   </svg>
                   <span>0.0000456 Libra</span>
-                  <span className="text-blue6">&nbsp;&nbsp;&nbsp; $ 0.16</span>
+                  <span className="color-blue6">&nbsp;&nbsp;&nbsp; $ 0.16</span>
                 </div>
               </div>
             </div>
             <div className="table__footer flex-center-y cursor-pointer">
-              <span className="text-blue6 m-r-7">View More</span>
+              <span className="color-blue6 m-r-7">View More</span>
               <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 8L0.669874 0.5L9.33013 0.499999L5 8Z" fill="#1AA7E8"/>
               </svg>

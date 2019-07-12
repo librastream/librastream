@@ -37,51 +37,51 @@ svg {
 }
 
 // color
-.text-primary {
+.color-primary {
   color: $color-primary;
 }
 
-.text-secondary {
+.color-secondary {
   color: $color-secondary;
 }
 
-.text-light2 {
+.color-light2 {
   color: $color-light2;
 }
 
-.text-light3 {
+.color-light3 {
   color: $color-light3;
 }
 
-.text-light4 {
+.color-light4 {
   color: $color-light4;
 }
 
-.text-dark1 {
+.color-dark1 {
   color: $color-dark1;
 }
 
-.text-dark2 {
+.color-dark2 {
   color: $color-dark2;
 }
 
-.text-blue1 {
+.color-blue1 {
   color: $color-blue1;
 }
 
-.text-blue2 {
+.color-blue2 {
   color: $color-blue2;
 }
 
-.text-blue5 {
+.color-blue5 {
   color: $color-blue5;
 }
 
-.text-blue6 {
+.color-blue6 {
   color: $color-blue6;
 }
 
-.text-black {
+.color-black {
   color: $color-black;
 }
 
@@ -213,12 +213,6 @@ svg {
     height: 42px;
     padding: 0 25px;
 
-    // sticky
-    border: 1px solid red;
-    bottom: 0;
-    position: sticky;
-    z-index: 1020;
-
     .status {
       align-items: center;
       color: $color-dark1;
@@ -245,15 +239,18 @@ svg {
   }
 }
 
-  // card
+// card
 .card {
   background-color: $color-white;
   border: $border-gray1;
   border-radius: 6px;
-  box-shadow: $box-shadow-card;
   height: calc(100% - 55px);
   position: relative;
+  &:hover {
+    box-shadow: $box-shadow-card;
+  }
 }
+
 //
 //.text-lightblue {
 //  color: $color-blue3;

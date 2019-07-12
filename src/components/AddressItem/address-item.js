@@ -5,13 +5,13 @@ import './address-item.scss';
 export default () => (
   <div id="addressItem">
     <div className="item flex-center-y">
-      <h4 className="title text-dark1 a26">Address</h4>
-      <div className="content text-blue6">
+      <h4 className="title color-dark1 a26">Address</h4>
+      <div className="content color-blue6">
         <span>3B5ETTuag3jhWQzw5XnmAx56Hoy9mEyQzd</span>
       </div>
     </div>
     <div className="item flex-center-y">
-      <h4 className="title text-dark1 a26">Total Recivied</h4>
+      <h4 className="title color-dark1 a26">Total Recivied</h4>
       <div className="content">
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="23" height="23" rx="4" fill="#01058A"/>
@@ -28,7 +28,7 @@ export default () => (
       </div>
     </div>
     <div className="item flex-center-y">
-      <h4 className="title text-dark1 a26">Final Balance</h4>
+      <h4 className="title color-dark1 a26">Final Balance</h4>
       <div className="content">
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="23" height="23" rx="4" fill="#01058A"/>
@@ -45,13 +45,13 @@ export default () => (
       </div>
     </div>
     <div className="item flex-center-y">
-      <h4 className="title text-dark1 a26">No. Transactions</h4>
+      <h4 className="title color-dark1 a26">No. Transactions</h4>
       <div className="content">
         <span>1</span>
       </div>
     </div>
     <div className="item flex-center-y">
-      <h4 className="title text-dark1 a26">Sequence</h4>
+      <h4 className="title color-dark1 a26">Sequence</h4>
       <div className="content">
         <span>1</span>
       </div>
