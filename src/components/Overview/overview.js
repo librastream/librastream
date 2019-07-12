@@ -3,6 +3,7 @@ import TransactionItem from '../TransactionItem/transaction-item';
 import Switch from '../SwitchButton/switch-button';
 import '../../styles/_base.scss';
 import './overview.scss';
+
 class Overview extends Component {
   render() {
     return (
