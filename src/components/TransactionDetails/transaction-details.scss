@@ -1,5 +1,4 @@
-@import '../../styles/imports/variables';
-@import '../../styles/typography';
+@import '../../styles/imports/index';
 
 #transactionDetails {
   background-color: $color-light1;
@@ -21,19 +20,21 @@
     }
   }
 
-  .table__body {
-    .item {
-      border-bottom: $border-gray1;
-      min-height: 72px;
-      padding: 0 20px;
-    }
+  .table {
+    &__body {
+      .item {
+        border-bottom: $border-gray1;
+        min-height: 72px;
+        padding: 0 20px;
+      }
 
-    .title {
-      width: 20%;
-    }
+      .title {
+        width: 20%;
+      }
 
-    .content {
-      width: 80%;
+      .content {
+        width: 80%;
+      }
     }
   }
 }
