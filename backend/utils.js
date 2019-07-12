@@ -1,12 +1,19 @@
 let libra = require('libra-grpc');
 
 function decode_hex(arg) {
-  return (new Buffer.from(arg, 'base64')).toString('hex');
+  return (new Buffer.from(arg, 'base64')).toString("hex");
 }
 
 function decode_int32le(arg) {
   return (new Buffer.from(arg, 'base64')).readUInt32LE(0);
 }
+
+let mongoObjectId = () => {
+  var timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+  return timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function () {
+    return (Math.random() * 16 | 0).toString(16);
+  }).toLowerCase();
+};
 
 function decode(result) {
   if (result == undefined)
@@ -17,6 +24,7 @@ function decode(result) {
     for (let i in transactions) {
       let decoded_raw_txn_bytes = libra.utils.deserializeRawTxnBytes(transactions[i].raw_txn_bytes);
       let { senderAccount, sequenceNumber, program, maxGasAmount, gasUnitPrice, expirationTime } = decoded_raw_txn_bytes;
+
       program.argumentsList.forEach((item, idx) => {
         if (item.type == 0) {
           program.argumentsList[idx].data = decode_int32le(item.data);
@@ -46,15 +54,19 @@ function decode(result) {
           maxedAmount: maxGasAmount,
           unitPrice: gasUnitPrice
         },
-        t_date = new Date(expirationTime * 1000).toISOString(),
-        module = program.modulesList;
+        t_date;
+      try {
+        t_date = new Date(expirationTime * 1000).toISOString();
+      } catch (err) {
+        t_date = new Date(0).toISOString();
+        console.log("time issue logging, version: ", version)
+
+      }
+      let module = program.modulesList;
 
       let events;
-      let access = (access) => {
-        return {};
-      };
       if (events_for_versions.events_for_version != null) {
-        events = events_for_versions.events_for_version[0].events[i];
+        events = events_for_versions.events_for_version[0].events[i]
         if (events != undefined) {
           events = {
             ...events,
@@ -63,15 +75,14 @@ function decode(result) {
               path: decode_hex(events.access_path.path)
             },
             event_data: decode_hex(events.event_data)
-          };
+          }
         } else {
-          events = [];
+          events = []
         }
 
       }
 
-      console.log('version: ', version);
-      let rec_new = { date: t_date, version, raw, sender, hash, gas, arguments: program.argumentsList, module, events };//, events, modules
+      let rec_new = { _id: version, date: t_date, version, raw, sender, hash, gas, arguments: program.argumentsList, module, events };//, events, modules
       arry_ret.push({ ...rec_new });
     }
   } catch (e) {
