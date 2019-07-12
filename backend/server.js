@@ -27,7 +27,7 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   //connection is up, let's add a simple simple event
   let socket_json = [];
-  for (let i = 0; i < 1; i++)
+  for (let i = 0; i < 5; i++)
     socket_json.push({
       id: i,
       txn: '1111111111111',
@@ -40,15 +40,15 @@ wss.on('connection', (ws) => {
 
   //send immediatly a feedback to the incoming connection  
   let i = 0;
-  // setInterval(() => {
-  //   let socket_json = {
-  //     socket_name: 'update',
-  //     Txn: '123456789101',
-  //     Age: i + 20,
-  //     From: '0x6d92958cdijeijd883646t2sdxjdi2',
-  //     To: '0x6d92958cdijeijd883646t2sdxjdi2',
-  //     Value: '1 Libra'
-  //   };
+  setInterval(() => {
+    let socket_json = {
+      socket_name: 'update',
+      Txn: '123456789101',
+      Age: 20,
+      From: '0x6d92958cdijeijd883646t2sdxjdi2',
+      To: '0x6d92958cdijeijd883646t2sdxjdi2',
+      Value: '1 Libra'
+    };
 
     // ws.send(JSON.stringify(socket_json));
     i += 1;
