@@ -1,0 +1,80 @@
+@import 'imports/index';
+
+// table
+.table {
+  background: #fff;
+  border-radius: 6px;
+  border: $border-gray1;
+
+  &__header {
+    align-items: center;
+    border-bottom: $border-gray1;
+    display: flex;
+    font-weight: bold;
+    height: 45px;
+    padding: 0 20px;
+
+    .title {
+      color: $color-primary;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .subtitle {
+      color: $color-secondary;
+      font-size: 10px;
+    }
+  }
+
+  &__body {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 11px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $color-white;
+      border-left: $border-gray1;
+      border-right: $border-gray1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-clip: content-box;
+      background-color: $color-secondary;
+      border: 2px solid transparent;
+      border-radius: 100px;
+    }
+  }
+
+  &__footer {
+    border-top: $border-gray1;
+    display: flex;
+    height: 42px;
+    padding: 0 25px;
+
+    .status {
+      align-items: center;
+      color: $color-dark1;
+      display: flex;
+      font-size: 10px;
+      opacity: .4;
+
+      &__count {
+        border: $border-gray2;
+        border-radius: 4px;
+        margin-right: 25px;
+        padding: 2px 5px;
+        width: 40px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &__info {
+
+      }
+    }
+  }
+}

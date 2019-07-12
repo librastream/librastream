@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TransactionItem from '../TransactionItem/transaction-item';
 import Switch from '../SwitchButton/switch-button';
-import '../../styles/_base.scss';
 import './overview.scss';
 
 class Overview extends Component {
@@ -20,9 +19,9 @@ class Overview extends Component {
               <input className="search__input p-0-45 w-100"
                      type="text"
                      placeholder="Search by Verson / Address / Hash"/>
-              <a className="search__btn text-white flex-center h-100">
+              <div className="search__btn text-white flex-center h-100">
                 Search
-              </a>
+              </div>
             </div>
           </div>
 
