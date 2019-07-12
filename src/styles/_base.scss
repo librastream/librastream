@@ -142,7 +142,7 @@ svg {
 .container {
   padding: 35px 0 60px;
   max-width: 1120px;
-  min-height: calc(100vh - 337px);
+  min-height: calc(100vh - #{$height-footer});
 }
 
 ////
@@ -212,6 +212,12 @@ svg {
     display: flex;
     height: 42px;
     padding: 0 25px;
+
+    // sticky
+    border: 1px solid red;
+    bottom: 0;
+    position: sticky;
+    z-index: 1020;
 
     .status {
       align-items: center;

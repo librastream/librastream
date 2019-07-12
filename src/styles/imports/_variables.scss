@@ -33,3 +33,8 @@ $box-shadow-card: 0px 8px 44px rgba(0, 0, 0, 0.15);
 // define
 $color-primary: $color-blue2;
 $color-secondary: $color-light4;
+
+$height-header: 71px;
+$height-footer--content: 181px;
+$height-footer--info: 84px;
+$height-footer: calc(#{$height-footer--content} + #{$height-footer--info});

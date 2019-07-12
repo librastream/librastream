@@ -13,7 +13,7 @@
 
   .content {
     border-bottom: $border-gray1;
-    height: 181px;
+    height: $height-footer--content;
 
     .section {
       &__main {
@@ -33,6 +33,6 @@
   }
 
   .info {
-    height: 84px;
+    height: $height-footer--info;
   }
 }
