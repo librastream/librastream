@@ -26,44 +26,20 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
   //connection is up, let's add a simple simple event
-  let socket_json = [];
-  for (let i = 0; i < 5; i++)
-    socket_json.push({
-      id: i,
-      txn: '1111111111111',
-      age: 20,
-      from: '0x6d92958cdijeijd883646t2sdxjdi2',
-      to: '0x6d92958cdijeijd883646t2sdxjdi2',
-      value: '1 Libra'
-    });
-    ws.send(JSON.stringify({data: socket_json, type: 'init'}));
+  console.log("start");
 
-  //send immediatly a feedback to the incoming connection  
-  let i = 0;
-  setInterval(() => {
-    let socket_json = {
-      socket_name: 'update',
-      Txn: '123456789101',
-      Age: 20,
-      From: '0x6d92958cdijeijd883646t2sdxjdi2',
-      To: '0x6d92958cdijeijd883646t2sdxjdi2',
-      Value: '1 Libra'
-    };
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+    const collection = client.db('explorer').collection('transactions');
+    const txCurrentCollection = await collection.find({}).sort({ 'version': -1 }).limit(100).toArray();
 
-    // ws.send(JSON.stringify(socket_json));
-    i += 1;
-  }, 2000);
+    ws.send(JSON.stringify({data: txCurrentCollection, type: 'init'}));
+  })
+  // let socket_json = [];
+  // ws.send(JSON.stringify({data: socket_json, type: 'init'}));
 
 });
 
 app.use('/api', router);
-
-
-//start our server
-server.listen(process.env.PORT || 8999, () => {
-  console.log(`Server started on port ${server.address().port} :)`);
-});
-
 
 if (!process.env.DATABASE) {
   console.log('Please specify a DATABASE uri');
@@ -74,12 +50,17 @@ if (!process.env.SERVER_PORT) {
   return;
 }
 
+//start our server
+server.listen(process.env.PORT || 8999, () => {
+  console.log(`Server started on port ${server.address().port} :)`);
+});
 
 var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
 
 (async () => {
   // Use connect method to connect to the server
+  console.log('Started connection attempts');
   MongoClient.connect(process.env.DATABASE, function(err, client) {
     assert.equal(null, err);
     console.log('Connected successfully to server');
@@ -146,7 +127,7 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
               })
               .catch(err => {
-                console.log('asycn error: ', err);
+                console.log('async error: ', err);
               });
 
             //Pull the latest db changes, and broacast to websocket
@@ -174,7 +155,6 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
   });
 })();
-
 
 let updateExplorer = () => {
   return;

@@ -12,7 +12,6 @@ const DataSchema = new Schema(
       arguments: Array,
       module: Object,
       date: Date
-
   }
 );
 

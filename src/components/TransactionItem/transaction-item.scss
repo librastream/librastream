@@ -53,4 +53,10 @@
 
   }
 
+  .to_and_from {
+    text-overflow: ellipsis;
+    width: 200px;
+    overflow: hidden;
+    display: block;
+  }
 }
