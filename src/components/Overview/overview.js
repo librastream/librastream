@@ -14,11 +14,17 @@ class Overview extends Component {
       console.log("connected");
     };
     this.ws.onmessage = (message) => {
-      console.log(message);
-      let server_data = JSON.parse(message.data);
-      server_data.data.forEach((elem, idx, arry) => {
-          this.transactionTable.push(elem);
-      });
+      const server_data = JSON.parse(message.data);
+      if (server_data.type === 'init') {
+        this.transactionTable = server_data.data.reverse().slice(0, 100);
+      } else if (this.transactionTable.length) {
+        server_data.data.forEach(d => {
+          this.transactionTable.unshift(d);
+        });
+
+        this.transactionTable.slice(0, 100);
+      }
+
       this.forceUpdate();
     };
 

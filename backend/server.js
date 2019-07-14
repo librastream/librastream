@@ -11,7 +11,7 @@ const libra = require('libra-grpc');
 
 const http = require('http');
 const WebSocket = require('ws');
-
+let wsConnection;
 
 const app = express();
 const router = express.Router();
@@ -27,12 +27,13 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   //connection is up, let's add a simple simple event
   console.log("start");
+  wsConnection = ws;
 
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
     const txCurrentCollection = await collection.find({}).sort({ 'version': -1 }).limit(100).toArray();
 
-    ws.send(JSON.stringify({data: txCurrentCollection, type: 'init'}));
+    wsConnection.send(JSON.stringify({data: txCurrentCollection, type: 'init'}));
   })
   // let socket_json = [];
   // ws.send(JSON.stringify({data: socket_json, type: 'init'}));
@@ -94,6 +95,9 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
               if (txPrevious == 1 || txLatest > txPrevious) {
                 console.log('adding item: ', txLatest);
+                if (wsConnection) {
+                  wsConnection.send(JSON.stringify({data: arry_decoded, type: 'new'}));
+                }
                 collection.insertMany(arry_decoded)
                   .catch(err => {
                     console.log('couldn\'t insert to DB');
