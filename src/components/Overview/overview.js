@@ -28,12 +28,8 @@ class Overview extends Component {
   render() {
     let items = [];
     this.transactionTable.forEach((elem, idx, arry) => {
-      items.push(<TransactionItem record={elem} key={elem.id}/>);
+      items.push(<TransactionItem record={elem} key={elem._id}/>);
     });
-    for (let elem of this.transactionTable) {
-      console.log("elem", elem);
-      console.log(items);
-    }
 
     return (
       <div id="overview">
