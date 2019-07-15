@@ -30,14 +30,16 @@ class Overview extends Component {
       `http://localhost:8999/api/search/${this.state.searchWord}`;
     axios.get(API_URL)
       .then(resp => {
-
+        console.log(`result`, resp);
+        if (resp.data.length > 0) {
+          console.log(`resp`, resp.data[0]);
+          const { history, location } = this.props;
+          history.push('/transaction-details');
+        }
       })
       .catch(function(err) {
         console.log(err);
       });
-
-    const { history, location } = this.props;
-    // history.push('/transaction-details');
     return 1;
   }
 

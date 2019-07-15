@@ -59,13 +59,15 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
 
 app.get('/api/search/:searchWord', (req, res) => {
-  console.log('in');
-  return res.send({ 'search': req.params.searchWord });
-  // MongoClient.connect(process.env.DATABASE, async function(err, client) {
-  //   const collection = client.db('explorer').collection('transactions');
-  //   const txCurrentCollection = await collection.find({}).sort({ 'version': -1 }).limit(100).toArray();
-  //   return res.send(txCurrentCollection);
-  // });
+  let searchWord = req.params.searchWord;
+  // return res.send({ 'search': req.params.searchWord });
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+    const collection = client.db('explorer').collection('transactions');
+
+    const result = await collection.find({'version': Number.parseInt(searchWord)}).limit(1).toArray();
+
+    return res.send(result);
+  });
 });
 
 (async () => {
