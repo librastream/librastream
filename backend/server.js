@@ -5,7 +5,6 @@ const express = require('express');
 let cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-//const Data = require('./data');
 const decode = require('./utils');
 const libra = require('libra-grpc');
 
@@ -26,15 +25,15 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
   //connection is up, let's add a simple simple event
-  console.log("start");
+  console.log('start');
   wsConnection = ws;
 
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
     const txCurrentCollection = await collection.find({}).sort({ 'version': -1 }).limit(100).toArray();
 
-    wsConnection.send(JSON.stringify({data: txCurrentCollection, type: 'init'}));
-  })
+    wsConnection.send(JSON.stringify({ data: txCurrentCollection, type: 'init' }));
+  });
   // let socket_json = [];
   // ws.send(JSON.stringify({data: socket_json, type: 'init'}));
 
@@ -58,6 +57,16 @@ server.listen(process.env.PORT || 8999, () => {
 
 var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
+
+app.get('/api/search/:searchWord', (req, res) => {
+  console.log('in');
+  return res.send({ 'search': req.params.searchWord });
+  // MongoClient.connect(process.env.DATABASE, async function(err, client) {
+  //   const collection = client.db('explorer').collection('transactions');
+  //   const txCurrentCollection = await collection.find({}).sort({ 'version': -1 }).limit(100).toArray();
+  //   return res.send(txCurrentCollection);
+  // });
+});
 
 (async () => {
   // Use connect method to connect to the server
@@ -96,7 +105,7 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
               if (txPrevious == 1 || txLatest > txPrevious) {
                 console.log('adding item: ', txLatest);
                 if (wsConnection) {
-                  wsConnection.send(JSON.stringify({data: arry_decoded, type: 'new'}));
+                  wsConnection.send(JSON.stringify({ data: arry_decoded, type: 'new' }));
                 }
                 collection.insertMany(arry_decoded)
                   .catch(err => {
@@ -142,9 +151,10 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
         });
       };
       (async () => {
-        while (true) {
-          await tryAsync();
-        }
+
+        // while (true) {
+        //   await tryAsync();
+        // }
       })();
 
 

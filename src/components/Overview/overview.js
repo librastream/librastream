@@ -1,17 +1,50 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import TransactionItem from '../TransactionItem/transaction-item';
 import Switch from '../SwitchButton/switch-button';
 import './overview.scss';
-import { forEach } from 'react-bootstrap/es/utils/ElementChildren';
 
 class Overview extends Component {
   transactionTable = [];
   URL = 'ws://localhost:8999';
   ws = new WebSocket(this.URL);
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchWord: ''
+    };
+    this.onChangeSearchWord = this.onChangeSearchWord.bind(this);
+    this.searchTxn = this.searchTxn.bind(this);
+  }
+
+  onChangeSearchWord(e) {
+    this.setState({
+      searchWord: e.target.value
+    });
+  };
+
+  searchTxn() {
+    const API_URL =
+      `http://localhost:8999/api/search/${this.state.searchWord}`;
+    axios.get(API_URL)
+      .then(resp => {
+
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+
+    const { history, location } = this.props;
+    // history.push('/transaction-details');
+    return 1;
+  }
+
   componentDidMount() {
-    console.log("Start");
+    console.log('Start');
     this.ws.onopen = () => {
-      console.log("connected");
+      console.log('connected');
     };
     this.ws.onmessage = (message) => {
       const server_data = JSON.parse(message.data);
@@ -28,7 +61,7 @@ class Overview extends Component {
       this.forceUpdate();
     };
 
-    console.log("End");
+    console.log('End');
   }
 
   render() {
@@ -50,8 +83,11 @@ class Overview extends Component {
               </svg>
               <input className="search__input p-0-45 w-100"
                      type="text"
-                     placeholder="Search by Verson / Address / Hash"/>
-              <div className="search__btn text-white flex-center h-100">
+                     placeholder="Search by Version / Address / Hash"
+                     value={this.state.searchWord}
+                     onChange={this.onChangeSearchWord}
+              />
+              <div className="search__btn text-white flex-center h-100" onClick={this.searchTxn}>
                 Search
               </div>
             </div>
