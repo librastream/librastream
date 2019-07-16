@@ -1,7 +1,7 @@
 {
-  "name": "librastream_backend",
+  "name": "Libra_Blockchain_Explorer_Backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Librastream allows you to explore and search the Libra blockchain for transactions, addresses, tokens, prices and other activities taking place on Libra",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",

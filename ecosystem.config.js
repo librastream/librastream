@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'LibraStream',
+    name: 'Libra Blockchain Explorer',
     script: 'npm start',
     instances: 1,
     autorestart: true,

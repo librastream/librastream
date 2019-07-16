@@ -28,16 +28,7 @@ export default () => (
     {/* center side - navbar */}
     <div className="navbar mx-auto p-0 h-100">
       <NavLink activeClassName="selected" exact to="/">
-        <h4 className="color-secondary p-0-20">Overview</h4>
-      </NavLink>
-      <NavLink activeClassName="selected" exact to="/address-overview">
-        <h4 className="color-secondary p-0-20">AddressOverview</h4>
-      </NavLink>
-      <NavLink activeClassName="selected" exact to="/transaction-details">
-        <h4 className="color-secondary p-0-20">TransactionDetails</h4>
-      </NavLink>
-      <NavLink activeClassName="selected" exact to="/discover-more">
-        <h4 className="color-secondary p-0-20">DiscoverMore</h4>
+        <h4 className="color-secondary p-0-20">Discover More</h4>
       </NavLink>
     </div>
 
