@@ -60,21 +60,20 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
 app.get('/api/search/:searchWord', (req, res) => {
   let searchWord = req.params.searchWord;
-  // return res.send({ 'search': req.params.searchWord });
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
     console.log(searchWord);
     let result = await collection.find({'version': Number.parseInt(searchWord)}).limit(1).toArray();
     console.log(result);
-    // if (result[0] !== undefined) {
-    //   return res.send({...result[0], type:'version'});
-    // }
-    // else {
+    if (result[0] !== undefined) {
+      return res.send({...result[0], type:'version'});
+    }
+    else {
       result = await collection.find({'hash.signedTransaction': searchWord}).limit(1).toArray();
       if (result[0] !== undefined)
         return res.send({...result[0], type:'tx'});
       return res.send({'type': 'address'});
-    // }
+    }
   });
 });
 

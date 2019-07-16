@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import moment from 'moment';
 
 import './transaction-details.scss';
-import axios from 'axios';
 
 class TransactionDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoading: true,
+    };
 
     this.goBack = this.goBack.bind(this);
   }
@@ -22,7 +25,8 @@ class TransactionDetails extends Component {
       .then(res => {
         this.setState({
           id: id,
-          version: res.data.version
+          data: res.data,
+          isLoading: false,
         });
       })
       .catch(function(err) {
@@ -31,6 +35,18 @@ class TransactionDetails extends Component {
   }
 
   render() {
+    const { isLoading, data } = this.state;
+
+    if (isLoading) return (
+      <div className="transactionDetails__loading">
+        Loading transaction data ...
+      </div>
+    );
+
+    console.log('data', data);
+    const timeBefore = moment(data.date).fromNow();
+    const timeReadable = moment(data.date).format('MMM-DD-YYYY hh:mm:ss A');
+
     return (
       <div id="transactionDetails">
         <div className="container">
@@ -43,14 +59,13 @@ class TransactionDetails extends Component {
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">Version</h4>
                 <div className="content">
-                  <span className="">{this.state.version}</span>
+                  <span className="">{data.version}</span>
                 </div>
               </div>
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">Transaction Hash</h4>
                 <div className="content">
-                  <span
-                    className="color-black font-weight-bold">0x5c06bdf4550ae6a1709ed2905a222d8ed51282bcdf20439d3f4e27e320d0396e</span>
+                  <span className="color-black font-weight-bold">{data.hash.signedTransaction}</span>
                 </div>
               </div>
               <div className="item flex-center-y">
@@ -67,19 +82,19 @@ class TransactionDetails extends Component {
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">Timestamp</h4>
                 <div className="content">
-                  <span>4 days 17 hrs ago (Jun-20-2019 10:27:52 PM +UTC)</span>
+                  <span>{timeBefore} ({timeReadable})</span>
                 </div>
               </div>
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">From</h4>
                 <div className="content color-blue6">
-                  <span>0x63d509f7152769ddf162ed048b83719fe1e31080</span>
+                  <span>{data.sender.account}</span>
                 </div>
               </div>
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">To</h4>
                 <div className="content color-blue6">
-                  <span>0x63d509f7152769ddf162ed048b83719fe1e31080</span>
+                  <span>{data.arguments[0].data}</span>
                   <span className="color-dark2">&nbsp;&nbsp;&nbsp; - Contract -</span>
                 </div>
               </div>
@@ -97,8 +112,8 @@ class TransactionDetails extends Component {
                              href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABcCAYAAAD0zUKRAAADbUlEQVR4nO2bT4iNURjGfyNJmjJNmqwsZEFp8i8LScICZWOhLBTKSmE1SiQrC8pCspAkSRqR5E+EktTQMCFJkpVkJUmSvDrNud3Pbe7MOfd+7zczeX71Nov73XPO95zvnPuc72kQQgghhBBCCCGEEEKIf+nI1cPMWpFwDrAMWArMB7qATuA38BX4ArwChoDHwK+JNk8dHXlSTXUbyTBrgF1RzEWJ33kaxT0HvHYeX5E+YCZwCvhUYb/DhCc2oVaY2Q0ze2GtE7572swWJvbZTi0pjHXQzI6YWU+xvYkgbF+bgjYS2jplZrOdRJ1uZrdH6PeZmR0ws+7xFnaWmfWXLGqRATPb6SDs2YR+9+TqVNYeOws4D2wsqb2RWA5MAzYAh4E3JbR5DFgyxjWhz+8l9DU6TZ7Um05PaTPCqjgYl3ErT+lUMzuZuLqujcdWEG7sesWiFnloZluiUKmi9kaxUngRf9iydWrXx54A9mU2Ebzqj+hfg4/tAaZn2LGReAT0A3eBd02uCT56a7SAKX2FcV4EjlOxj90OrE68NgzyPXAJeAJ8bvg8CLsSWBtvfHnmWFbFGoqHi7fAz3h/oe15ca/MmbyXNVErIS6nudHvpS7XjRlLtStatgH3jaQ59+M4KvexFxIHeLFxgBnVE/2rl31rxsP44FC1sJsTbzb4wykl+Mw1ZnZvPEVtRdgpLWi7OOGaK8Bu4E8L7TfyANgEHIp7qBd3gB3AB8c+mhNncP4oyzTMerfT8bPX4XQX2jo6lieuSthahRckZwo3Gv6ucxK1WKvN7HIJL3nCFrM+pc9cynofG46Fe6ON2t/+9CUTLNq26FHHOprWqFm/8FryVmpHuT62qhfd3nRGH9sLLIiHjq74G/ItVvC2g8Bz4GPueP5XYd3JFbYVVyAk7PghYZ3wDhNrTPqUNheltHWU0jqUUlqHUkqrlNYHpbQVoJTWGaW0BRpT2rCNzFBKW0cpbZnE5aSU1klYpbQOwiqlTUApbR2ltEpp/UoprTNKaZ1RSjtZUUo7QZCwTkhYJ5TSOqGUto5SWodSSutQSmmV0vqglLYClNI6o5S2gP6XdgyU0pZJXE5KaZ2EVUrrIKxS2gS8UtqrSmkziTOolNZJ2FoppW2CUtpElNJOkJRWCPHfI4QQQgghhBBCCPEPwF8l4mZpJAndJgAAAABJRU5ErkJggg=="/>
                     </defs>
                   </svg>
-                  <span>15 Libra</span>
-                  <span className="color-blue6">&nbsp;&nbsp;&nbsp; $ 350</span>
+                  <span>{data.arguments[1].data} Libra</span>
+                  {/*<span className="color-blue6">&nbsp;&nbsp;&nbsp; $ 350</span>*/}
                 </div>
               </div>
               <div className="item flex-center-y">
