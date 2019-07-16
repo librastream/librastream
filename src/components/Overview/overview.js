@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import axios from 'axios';
 
 import TransactionItem from '../TransactionItem/transaction-item';
@@ -33,8 +34,8 @@ class Overview extends Component {
         console.log(`result`, resp);
         if (resp.data.length > 0) {
           console.log(`resp`, resp.data[0]);
-          const { history, location } = this.props;
-          history.push('/transaction-details');
+          const { history } = this.props;
+          history.push(`/transaction-details/${resp.data[0]._id}`);
         }
       })
       .catch(function(err) {
@@ -125,4 +126,4 @@ class Overview extends Component {
   }
 }
 
-export default Overview;
+export default withRouter(Overview);

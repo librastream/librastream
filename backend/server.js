@@ -70,6 +70,18 @@ app.get('/api/search/:searchWord', (req, res) => {
   });
 });
 
+app.get('/api/:id', (req, res) => {
+  let id = req.params.id;
+  // return res.send({ 'search': req.params.searchWord });
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+    const collection = client.db('explorer').collection('transactions');
+
+    const result = await collection.find({'_id': Number.parseInt(id)}).limit(1).toArray();
+
+    return res.send(result);
+  });
+});
+
 (async () => {
   // Use connect method to connect to the server
   console.log('Started connection attempts');

@@ -1,8 +1,38 @@
 import React, { Component } from 'react';
 
 import './transaction-details.scss';
+import axios from 'axios';
 
 class TransactionDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state ={
+    };
+
+    this.goBack = this.goBack.bind(this);
+  }
+
+  goBack() {
+    this.props.history.goBack();
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    const API_URL = `http://localhost:8999/api/${id}`;
+    axios.get(API_URL)
+      .then(res => {
+        this.setState({
+          id: id,
+          version: res.data[0].version
+        });
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+
+
+  }
+
   render() {
     return (
       <div id="transactionDetails">
@@ -10,13 +40,13 @@ class TransactionDetails extends Component {
           <div className="table">
             <div className="table__header">
               <h5 className="title">Transaction Details</h5>
-              <div className="subtitle">Back</div>
+              <div className="subtitle cursor-pointer" onClick={this.goBack}>Back</div>
             </div>
             <div className="table__body">
               <div className="item flex-center-y">
                 <h4 className="title color-dark1 a26">Version</h4>
                 <div className="content">
-                  <span className="">1</span>
+                  <span className="">{this.state.version}</span>
                 </div>
               </div>
               <div className="item flex-center-y">
