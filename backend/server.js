@@ -85,6 +85,28 @@ app.get('/api/:id', (req, res) => {
   });
 });
 
+app.get('/api/version/:arg', (req, res) => {
+  let arg = req.params.arg;
+  // return res.send({ 'search': req.params.searchWord });
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+    const collection = client.db('explorer').collection('transactions');
+
+    const result = await collection.find({'version': Number.parseInt(arg)}).limit(1).toArray();
+    return res.send({...result[0]});
+  });
+});
+
+app.get('/api/tx/:arg', (req, res) => {
+  let arg = req.params.arg;
+  // return res.send({ 'search': req.params.searchWord });
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+    const collection = client.db('explorer').collection('transactions');
+
+    const result = await collection.find({'hash.signedTransaction': arg}).limit(1).toArray();
+    return res.send({...result[0]});
+  });
+});
+
 (async () => {
   // Use connect method to connect to the server
   console.log('Started connection attempts');

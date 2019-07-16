@@ -15,9 +15,9 @@ class App extends Component {
       <div>
         <Header/>
         <Route exact path="/" component={Overview}/>
-        <Route exact path="/address/:addr" component={AddressOverview}/>
-        <Route exact path="/version/:id" component={TransactionDetails}/>
-        <Route exact path="/tx/:id" component={TransactionDetails}/>
+        <Route exact path="/address/:arg" component={AddressOverview}/>
+        <Route exact path="/version/:arg" component={TransactionDetails}/>
+        <Route exact path="/tx/:arg" component={TransactionDetails}/>
         <Route exact path="/discover-more" component={DiscoverMore}/>
         <Footer/>
       </div>

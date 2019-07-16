@@ -61,11 +61,7 @@ class AddressOverview extends Component {
               {/*</svg>*/}
             </div>
             <div className="table__body">
-              {/*<TransactionItem/>*/}
-              {/*<TransactionItem/>*/}
-              {/*<TransactionItem/>*/}
-              {/*<TransactionItem/>*/}
-              {/*<TransactionItem/>*/}
+
             </div>
             <div className="table__footer">
               <div className="status">

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import Spinner from 'react-bootstrap/Spinner';
 import axios from 'axios';
 
 import TransactionItem from '../TransactionItem/transaction-item';
 import Switch from '../SwitchButton/switch-button';
 import './overview.scss';
-import Spinner from 'react-bootstrap/Spinner';
 
 class Overview extends Component {
   transactionTable = [];
@@ -34,18 +34,14 @@ class Overview extends Component {
       `http://localhost:8999/api/search/${this.state.searchWord}`;
     axios.get(API_URL)
       .then(resp => {
-        this.setState({isLoading: false});
+        this.setState({ isLoading: false });
         if (resp.data.type === "version")
-          this.props.history.push(`/version/${resp.data._id}`);
+          this.props.history.push(`/version/${this.state.searchWord}`);
         else if (resp.data.type === "tx")
-          this.props.history.push(`/tx/${resp.data._id}`);
+          this.props.history.push(`/tx/${this.state.searchWord}`);
         else if (resp.data.type === 'address')
           this.props.history.push(`/address/${this.state.searchWord}`);
-      })
-      .catch(function(err) {
-        console.log(err);
       });
-    return 1;
   }
 
   componentDidMount() {
