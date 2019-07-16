@@ -66,16 +66,15 @@ app.get('/api/search/:searchWord', (req, res) => {
     console.log(searchWord);
     let result = await collection.find({'version': Number.parseInt(searchWord)}).limit(1).toArray();
     console.log(result);
-    if (result[0] !== undefined) {
-      return res.send({...result[0], type:'version'});
-    }
-    else {
+    // if (result[0] !== undefined) {
+    //   return res.send({...result[0], type:'version'});
+    // }
+    // else {
       result = await collection.find({'hash.signedTransaction': searchWord}).limit(1).toArray();
       if (result[0] !== undefined)
         return res.send({...result[0], type:'tx'});
-      return res.send({'error': 'error'});
-    }
-
+      return res.send({'type': 'address'});
+    // }
   });
 });
 

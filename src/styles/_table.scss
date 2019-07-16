@@ -27,6 +27,7 @@
   }
 
   &__body {
+    max-height: 579px;
     overflow-y: auto;
 
     &::-webkit-scrollbar {

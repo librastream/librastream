@@ -36,6 +36,8 @@ class Overview extends Component {
           this.props.history.push(`/version/${resp.data._id}`);
         else if (resp.data.type === "tx")
           this.props.history.push(`/tx/${resp.data._id}`);
+        else if (resp.data.type === 'address')
+          this.props.history.push(`/address/${this.state.searchWord}`);
       })
       .catch(function(err) {
         console.log(err);

@@ -3,8 +3,31 @@ import TransactionItem from '../TransactionItem/transaction-item';
 import AddressItem from '../AddressItem/address-item';
 import QRCode from '../QRCode/qrcode';
 import './address-overview.scss';
+import axios from 'axios';
 
 class AddressOverview extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state ={
+    };
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    const API_URL = `http://localhost:8999/api/${id}`;
+    axios.get(API_URL)
+      .then(res => {
+        this.setState({
+          id: id,
+          version: res.data.version
+        });
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div id="addressOverview">
@@ -38,11 +61,11 @@ class AddressOverview extends Component {
               {/*</svg>*/}
             </div>
             <div className="table__body">
-              <TransactionItem/>
-              <TransactionItem/>
-              <TransactionItem/>
-              <TransactionItem/>
-              <TransactionItem/>
+              {/*<TransactionItem/>*/}
+              {/*<TransactionItem/>*/}
+              {/*<TransactionItem/>*/}
+              {/*<TransactionItem/>*/}
+              {/*<TransactionItem/>*/}
             </div>
             <div className="table__footer">
               <div className="status">

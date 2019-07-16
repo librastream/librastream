@@ -6,8 +6,7 @@ import axios from 'axios';
 class TransactionDetails extends Component {
   constructor(props) {
     super(props);
-    this.state ={
-    };
+    this.state = {};
 
     this.goBack = this.goBack.bind(this);
   }
@@ -29,8 +28,6 @@ class TransactionDetails extends Component {
       .catch(function(err) {
         console.log(err);
       });
-
-
   }
 
   render() {
