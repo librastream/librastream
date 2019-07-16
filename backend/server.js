@@ -34,9 +34,6 @@ wss.on('connection', (ws) => {
 
     wsConnection.send(JSON.stringify({ data: txCurrentCollection, type: 'init' }));
   });
-  // let socket_json = [];
-  // ws.send(JSON.stringify({data: socket_json, type: 'init'}));
-
 });
 
 app.use('/api', router);
@@ -149,13 +146,13 @@ app.get('/api/:id', (req, res) => {
                 } else {
 
                   insert(result);
-                  // (async () => {
-                  //   for (let elem in arry_decoded) {
-                  //     txPrevious = txLatest;
-                  //     txLatest = arry_decoded[elem].version;
+                  (async () => {
+                    for (let elem in arry_decoded) {
+                      txPrevious = txLatest;
+                      txLatest = arry_decoded[elem].version;
 
-                  //   }
-                  // })();
+                    }
+                  })();
                 }
 
               })
@@ -172,9 +169,9 @@ app.get('/api/:id', (req, res) => {
       };
       (async () => {
 
-        // while (true) {
-        //   await tryAsync();
-        // }
+        while (true) {
+          await tryAsync();
+        }
       })();
 
 
