@@ -202,9 +202,10 @@ class TransactionDetails extends Component {
               }
             </div>
             <div className={"table__footer flex-center-y" + (this.state.viewMore == 0 ? '' : 'no-top-border')}>
-              <div className="cursor-pointer flex-center-y">
-              <span className="color-blue6 m-r-7 cursor-pointer"
-                    onClick={this.viewMore}>View {this.state.viewMore == 0 ? 'More' : 'Less'}</span>
+              <div className="cursor-pointer flex-center-y" onClick={this.viewMore}>
+              <span className="color-blue6 m-r-7 cursor-pointer">
+                View {this.state.viewMore == 0 ? 'More' : 'Less'}
+              </span>
               {this.state.viewMore == 0 &&
                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 8L0.669874 0.5L9.33013 0.499999L5 8Z" fill="#1AA7E8"/>
