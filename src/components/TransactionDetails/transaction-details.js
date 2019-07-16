@@ -23,7 +23,7 @@ class TransactionDetails extends Component {
       .then(res => {
         this.setState({
           id: id,
-          version: res.data[0].version
+          version: res.data.version
         });
       })
       .catch(function(err) {

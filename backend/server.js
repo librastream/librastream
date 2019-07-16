@@ -63,10 +63,19 @@ app.get('/api/search/:searchWord', (req, res) => {
   // return res.send({ 'search': req.params.searchWord });
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
+    console.log(searchWord);
+    let result = await collection.find({'version': Number.parseInt(searchWord)}).limit(1).toArray();
+    console.log(result);
+    if (result[0] !== undefined) {
+      return res.send({...result[0], type:'version'});
+    }
+    else {
+      result = await collection.find({'hash.signedTransaction': searchWord}).limit(1).toArray();
+      if (result[0] !== undefined)
+        return res.send({...result[0], type:'tx'});
+      return res.send({'error': 'error'});
+    }
 
-    const result = await collection.find({'version': Number.parseInt(searchWord)}).limit(1).toArray();
-
-    return res.send(result);
   });
 });
 
@@ -77,8 +86,7 @@ app.get('/api/:id', (req, res) => {
     const collection = client.db('explorer').collection('transactions');
 
     const result = await collection.find({'_id': Number.parseInt(id)}).limit(1).toArray();
-
-    return res.send(result);
+    return res.send({...result[0]});
   });
 });
 

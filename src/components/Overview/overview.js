@@ -31,12 +31,11 @@ class Overview extends Component {
       `http://localhost:8999/api/search/${this.state.searchWord}`;
     axios.get(API_URL)
       .then(resp => {
-        console.log(`result`, resp);
-        if (resp.data.length > 0) {
-          console.log(`resp`, resp.data[0]);
-          const { history } = this.props;
-          history.push(`/transaction-details/${resp.data[0]._id}`);
-        }
+        console.log(`resp`, resp.data);
+        if (resp.data.type === "version")
+          this.props.history.push(`/version/${resp.data._id}`);
+        else if (resp.data.type === "tx")
+          this.props.history.push(`/tx/${resp.data._id}`);
       })
       .catch(function(err) {
         console.log(err);
