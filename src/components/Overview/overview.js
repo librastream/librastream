@@ -5,6 +5,7 @@ import axios from 'axios';
 import TransactionItem from '../TransactionItem/transaction-item';
 import Switch from '../SwitchButton/switch-button';
 import './overview.scss';
+import Spinner from 'react-bootstrap/Spinner';
 
 class Overview extends Component {
   transactionTable = [];
@@ -14,7 +15,8 @@ class Overview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchWord: ''
+      searchWord: '',
+      isLoading: false
     };
     this.onChangeSearchWord = this.onChangeSearchWord.bind(this);
     this.searchTxn = this.searchTxn.bind(this);
@@ -22,16 +24,17 @@ class Overview extends Component {
 
   onChangeSearchWord(e) {
     this.setState({
-      searchWord: e.target.value
+      searchWord: e.target.value,
     });
   };
 
   searchTxn() {
+    this.setState({isLoading: true});
     const API_URL =
       `http://localhost:8999/api/search/${this.state.searchWord}`;
     axios.get(API_URL)
       .then(resp => {
-        console.log(`resp`, resp.data);
+        this.setState({isLoading: false});
         if (resp.data.type === "version")
           this.props.history.push(`/version/${resp.data._id}`);
         else if (resp.data.type === "tx")
@@ -74,6 +77,10 @@ class Overview extends Component {
       items.push(<TransactionItem record={elem} key={elem._id}/>);
     });
 
+    let { isLoading } = this.state;
+    let searchItem = 'Search';
+    if (isLoading) searchItem = <Spinner animation="border" variant="light" size="sm"/>;
+
     return (
       <div id="overview">
         <div className="container">
@@ -92,7 +99,7 @@ class Overview extends Component {
                      onChange={this.onChangeSearchWord}
               />
               <div className="search__btn text-white flex-center h-100" onClick={this.searchTxn}>
-                Search
+                {searchItem}
               </div>
             </div>
           </div>
