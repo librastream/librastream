@@ -201,19 +201,21 @@ class TransactionDetails extends Component {
                 </React.Fragment>
               }
             </div>
-            <div className={"table__footer flex-center-y cursor-pointer " + (this.state.viewMore == 0 ? '' : 'no-top-border')}>
-              <span className="color-blue6 m-r-7"
+            <div className={"table__footer flex-center-y" + (this.state.viewMore == 0 ? '' : 'no-top-border')}>
+              <div className="cursor-pointer flex-center-y">
+              <span className="color-blue6 m-r-7 cursor-pointer"
                     onClick={this.viewMore}>View {this.state.viewMore == 0 ? 'More' : 'Less'}</span>
               {this.state.viewMore == 0 &&
-              <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 8L0.669874 0.5L9.33013 0.499999L5 8Z" fill="#1AA7E8"/>
-              </svg>
+                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 8L0.669874 0.5L9.33013 0.499999L5 8Z" fill="#1AA7E8"/>
+                </svg>
               }
               {this.state.viewMore == 1 &&
-              <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 -4.37114e-07L0.669874 7.5L9.33013 7.5L5 -4.37114e-07Z" fill="#1AA7E8"/>
-              </svg>
+                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 -4.37114e-07L0.669874 7.5L9.33013 7.5L5 -4.37114e-07Z" fill="#1AA7E8"/>
+                </svg>
               }
+              </div>
             </div>
           </div>
         </div>
