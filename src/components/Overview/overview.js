@@ -59,7 +59,7 @@ class Overview extends Component {
           this.transactionTable.unshift(d);
         });
 
-        this.transactionTable.slice(0, 100);
+        this.transactionTable.splice(100);
       }
 
       this.forceUpdate();
