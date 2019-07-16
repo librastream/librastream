@@ -9,13 +9,21 @@ class TransactionDetails extends Component {
     super(props);
     this.state = {
       isLoading: true,
+      viewMore: 0
     };
 
     this.goBack = this.goBack.bind(this);
+    this.viewMore = this.viewMore.bind(this);
   }
 
   goBack() {
     this.props.history.goBack();
+  }
+
+  viewMore() {
+    this.setState({
+      viewMore: (this.state.viewMore + 1) % 2
+    });
   }
 
   componentDidMount() {
@@ -26,7 +34,7 @@ class TransactionDetails extends Component {
         this.setState({
           id: id,
           data: res.data,
-          isLoading: false,
+          isLoading: false
         });
       })
       .catch(function(err) {
@@ -48,7 +56,7 @@ class TransactionDetails extends Component {
     const timeReadable = moment(data.date).format('MMM-DD-YYYY hh:mm:ss A');
 
     return (
-      <div id="transactionDetails">
+      <div className="transactionDetails">
         <div className="container">
           <div className="table">
             <div className="table__header">
@@ -134,12 +142,78 @@ class TransactionDetails extends Component {
                   {/*<span className="color-blue6">&nbsp;&nbsp;&nbsp; $ 0.16</span>*/}
                 </div>
               </div>
+              {this.state.viewMore > 0 &&
+                <React.Fragment>
+                  <div className="item flex-center-y">
+                    <h4 className="title color-dark1 a26">Sequence Number</h4>
+                    <div className="content">
+                      <span>{data.sender.sequenceNumber}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>Version</h4>
+                    <div className="content">
+                      <span>{data.version}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>Gas Unit Price</h4>
+                    <div className="content">
+                      <span>{data.gas.unitPrice}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>Gas Max Amount</h4>
+                    <div className="content">
+                      <span>{data.gas.maxedAmount}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>Signature</h4>
+                    <div className="content">
+                      <span>{data.sender.signature}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>Public Key</h4>
+                    <div className="content">
+                      <span>{data.sender.publicKey}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>State Root Hash</h4>
+                    <div className="content">
+                      <span>{data.hash.stateRoot}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>Event Root Hash</h4>
+                    <div className="content">
+                      <span>{data.hash.eventRoot}</span>
+                    </div>
+                  </div>
+                  <div className='item flex-center-y'>
+                    <h4 className='title color-dark1 a26'>Program</h4>
+                    <div className="content code">
+                      <span>{data.raw.program}</span>
+                    </div>
+                  </div>
+                </React.Fragment>
+              }
             </div>
-            <div className="table__footer flex-center-y cursor-pointer">
-              <span className="color-blue6 m-r-7">View More</span>
+            <div className={"table__footer flex-center-y cursor-pointer " + (this.state.viewMore == 0 ? '' : 'no-top-border')}>
+              <span className="color-blue6 m-r-7"
+                    onClick={this.viewMore}>View {this.state.viewMore == 0 ? 'More' : 'Less'}</span>
+              {this.state.viewMore == 0 &&
               <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 8L0.669874 0.5L9.33013 0.499999L5 8Z" fill="#1AA7E8"/>
               </svg>
+              }
+              {this.state.viewMore == 1 &&
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 -4.37114e-07L0.669874 7.5L9.33013 7.5L5 -4.37114e-07Z" fill="#1AA7E8"/>
+              </svg>
+              }
             </div>
           </div>
         </div>

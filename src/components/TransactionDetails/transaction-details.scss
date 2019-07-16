@@ -11,8 +11,14 @@
 }
 
 
-#transactionDetails {
+.transactionDetails {
   background-color: $color-light1;
+
+  .table {
+    &__body {
+      max-height: unset;
+    }
+  }
 
   .body {
   }
@@ -38,6 +44,10 @@
         border-bottom: $border-gray1;
         min-height: 72px;
         padding: 0 20px;
+        word-break: break-all;
+        &:last-of-type {
+          border: none;
+        }
       }
 
       .title {
@@ -47,6 +57,9 @@
       .content {
         width: 80%;
       }
+    }
+    .no-top-border {
+      border-top: none;
     }
   }
 }

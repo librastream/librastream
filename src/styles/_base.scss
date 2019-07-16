@@ -8,6 +8,14 @@ svg {
   margin-right: 8px;
 }
 
+.code {
+  background-color: $color-light2;
+  border: $border-code;
+  border-radius: 8px;
+  margin: 40px 0;
+  padding: 20px 30px;
+}
+
 .container {
   padding: 35px 0 60px;
   max-width: 1120px;
