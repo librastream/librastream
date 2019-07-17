@@ -55,7 +55,6 @@ server.listen(process.env.PORT || 8999, () => {
 
 var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
-
 app.get('/api/search/:searchWord', (req, res) => {
   let searchWord = req.params.searchWord;
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
@@ -90,8 +89,10 @@ app.get('/api/:id', (req, res) => {
   });
 });
 
-app.get('/api/address/:searchWord', (req, res) => {
+app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
   let searchWord = req.params.searchWord;
+  let pageSize = req.params.pageSize;
+  let currentPage = req.params.currentPage;
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
 
@@ -101,10 +102,13 @@ app.get('/api/address/:searchWord', (req, res) => {
       color = 'RED';
     let res2 = await collection.find({ 'arguments': { 'type': 1, 'data': searchWord } }).toArray();
     const transactions = [...res1, ...res2];
+    const transactions_len = transactions.length;
+    let sub_transactions = transactions.slice(pageSize * (currentPage - 1), pageSize * currentPage);
     const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
 
     return res.send({
-      transactions,
+      sub_transactions,
+      transactions_len,
       'type': 'address',
       'total_received': transactions.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
       'final_balance': res1.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
@@ -219,9 +223,9 @@ app.get('/api/tx/:arg', (req, res) => {
       };
       (async () => {
 
-        while (true) {
-          await tryAsync();
-        }
+        // while (true) {
+        //   await tryAsync();
+        // }
       })();
 
 

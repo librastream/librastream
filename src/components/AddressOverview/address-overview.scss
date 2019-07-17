@@ -1,8 +1,10 @@
 @import '../../styles/imports/index';
 
-#addressOverview {
+.addressOverview {
   background-color: $color-light1;
-
+  .rc-pagination {
+    margin: 0;
+  }
   .mb-45 {
     margin-bottom: 45px;
   }
