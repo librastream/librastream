@@ -6,12 +6,14 @@ import AddressItem from '../AddressItem/address-item';
 import QRCode from '../QRCode/qrcode';
 import TransactionItem from '../TransactionItem/transaction-item';
 import './address-overview.scss';
+import Spinner from 'react-bootstrap/Spinner';
 class AddressOverview extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
+      isLoadingTable: false,
       pageSize: 6,
       defaultCurrent: 1,
       total: 0
@@ -21,13 +23,15 @@ class AddressOverview extends Component {
   }
 
   onChange(page) {
+    this.setState({isLoadingTable: true});
     this.setState({
-      currentPage: page
+      currentPage: page,
     });
     // this.state.currentPage = page;
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
       .then(res => {
+        this.setState({isLoadingTable: false});
         let tmp = {...res.data, address: this.state.searchWord};
         this.setState({
           record: tmp
@@ -57,6 +61,12 @@ class AddressOverview extends Component {
   render() {
     if (this.state.isLoading) {
       return (<div className="loading">Loading...</div>)
+    }
+
+    let loading = '';
+    if (this.state.isLoadingTable) {
+      let style = { 'position': 'absolute', top: '50%', left: '50%' };
+      loading = <Spinner style={style} animation="border" variant="secondary"/>;
     }
 
     let items=[];
@@ -108,12 +118,14 @@ class AddressOverview extends Component {
               {/*        fill="#A7A9C0"/>*/}
               {/*</svg>*/}
             </div>
-            <div className="table__body">
+            <div className={`table__body ${this.state.isLoadingTable ? 'blur' : ''}`}>
+              {loading}
+              <div className={`transparent ${this.state.isLoadingTable ? 'a26' : ''}`}></div>
               {items}
             </div>
             <div className="table__footer">
               <div className="status">
-                <input className="status__count" type="number"/>
+                <input className="status__count" type="number" />
                 <div className="status__info">Show 10 per second.</div>
               </div>
               <div className="ml-auto flex-center-y">

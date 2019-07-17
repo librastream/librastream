@@ -87,11 +87,29 @@ svg {
   color: $color-black;
 }
 
+.blur {
+  filter: blur(1px);
+}
+
+.transparent {
+  background-color: $color-light3;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+}
+
 .a26 {
   opacity: .26;
 }
 
 // spacing
+.trans-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .flex-center {
   display: flex;
   justify-content: center;
