@@ -62,7 +62,7 @@ class AddressOverview extends Component {
           {/* section2 - table */}
           <div className="table">
             <div className="table__header">
-              <h5 classender="title">Transactions</h5>
+              <h5 className="title">Transactions</h5>
               <div className="subtitle">More than 500,000 transactions found</div>
               {/*<svg width="18" height="5" viewBox="0 0 18 5" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
               {/*  <path fillRule="evenodd" clipRule="evenodd"*/}
