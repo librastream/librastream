@@ -19,6 +19,7 @@ class Overview extends Component {
       isLoading: false
     };
     this.onChangeSearchWord = this.onChangeSearchWord.bind(this);
+    this.onHandleKeyPress = this.onHandleKeyPress.bind(this);
     this.searchTxn = this.searchTxn.bind(this);
   }
 
@@ -28,20 +29,34 @@ class Overview extends Component {
     });
   };
 
+  onHandleKeyPress(e){
+    if(e.key == "Enter"){
+     this.searchTxn();
+    }
+  }
+
   searchTxn() {
-    this.setState({isLoading: true});
-    const API_URL =
-      `http://localhost:8999/api/search/${this.state.searchWord}`;
-    axios.get(API_URL)
-      .then(resp => {
-        this.setState({ isLoading: false });
-        if (resp.data.type === "version")
-          this.props.history.push(`/version/${this.state.searchWord}`);
-        else if (resp.data.type === "tx")
-          this.props.history.push(`/tx/${this.state.searchWord}`);
-        else if (resp.data.type === 'address')
-          this.props.history.push(`/address/${this.state.searchWord}`);
-      });
+    if(!isNaN(this.state.searchWord.replace(" ", ""))){
+      this.props.history.push(`/version/${this.state.searchWord}`);
+    }else{
+      if(this.state.searchWord.length == 64){
+        this.props.history.push(`/address/${this.state.searchWord}`);
+      }
+    }
+   // this.setState({isLoading: true});
+  //if(isNaN())
+    // const API_URL =
+    //   `http://localhost:8999/api/search/${this.state.searchWord}`;
+    // axios.get(API_URL)
+    //   .then(resp => {
+    //     this.setState({ isLoading: false });
+    //     if (resp.data.type === "version")
+    //       this.props.history.push(`/version/${this.state.searchWord}`);
+    //     else if (resp.data.type === "tx")
+    //       this.props.history.push(`/tx/${this.state.searchWord}`);
+    //     else if (resp.data.type === 'address')
+    //       this.props.history.push(`/address/${this.state.searchWord}`);
+    //   });
   }
 
   componentDidMount() {
@@ -89,6 +104,7 @@ class Overview extends Component {
                      placeholder="Search by Version / Address / Hash"
                      value={this.state.searchWord}
                      onChange={this.onChangeSearchWord}
+                     onKeyPress={this.onHandleKeyPress}
               />
               <div className="search__btn text-white flex-center h-100" onClick={this.searchTxn}>
                 {searchItem}

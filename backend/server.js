@@ -55,30 +55,6 @@ server.listen(process.env.PORT || 8999, () => {
 
 var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
-
-app.get('/api/search/:searchWord', (req, res) => {
-  let searchWord = req.params.searchWord;
-  MongoClient.connect(process.env.DATABASE, async function(err, client) {
-    const collection = client.db('explorer').collection('transactions');
-    let result = [];
-    if (!isNaN(searchWord)) {
-      result = await collection.find({ 'version': Number.parseInt(searchWord) }).limit(1).toArray();
-    }
-    console.log('start');
-    if (result[0] !== undefined) {
-      console.log('in');
-      return res.send({ ...result[0], type: 'version' });
-    } else {
-      console.log('out');
-
-      result = await collection.find({ 'hash.signedTransaction': searchWord }).toArray();
-      if (result[0] !== undefined)
-        return res.send({ ...result[0], type: 'tx' });
-      return res.send({ 'type': 'address' });
-    }
-  });
-});
-
 app.get('/api/:id', (req, res) => {
   let id = req.params.id;
   // return res.send({ 'search': req.params.searchWord });
@@ -232,40 +208,3 @@ app.get('/api/tx/:arg', (req, res) => {
 
   });
 })();
-
-let updateExplorer = () => {
-  return;
-  let start_version = db.collection('transactions').find({});
-  start_version.sort({ 'version': -1 }).limit(1).exec((error, document) => {
-    console.log(document);
-  });
-
-
-  console.log(a);
-
-  return;
-
-  let params = {
-    start_version,
-    limit: 2,
-    fetch_events: true
-  };
-
-  client.request('get_transactions', params, function(err, result) {
-    let arry_decoded;
-    arry_decoded = decode(result);
-    for (let elem in arry_decoded) {
-      console.log(arry_decoded[elem]);
-
-      db.collection('transactions').insertOne(arry_decoded[elem], function(err, res) {
-        if (err) {
-          console.log('failed to insert recordr: ', err);
-          return err;
-        }
-        console.log('document inserted');
-      });
-    }
-  });
-};
-
-updateExplorer();
