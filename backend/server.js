@@ -96,6 +96,9 @@ app.get('/api/address/:searchWord', (req, res) => {
     const collection = client.db('explorer').collection('transactions');
 
     let res1 = await collection.find({ 'sender.account': searchWord }).limit(1000).toArray();
+    let color='GREEN';
+    if (res1.length > 0)
+      color = 'RED';
     let res2 = await collection.find({ 'arguments': { 'type': 1, 'data': searchWord } }).toArray();
     const transactions = [...res1, ...res2];
     const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
@@ -105,7 +108,8 @@ app.get('/api/address/:searchWord', (req, res) => {
       'type': 'address',
       'total_received': transactions.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
       'final_balance': res1.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
-      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : ''
+      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : '',
+      'color': color
     });
     // }
   });

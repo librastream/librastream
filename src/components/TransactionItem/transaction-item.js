@@ -33,6 +33,10 @@ class TransactionItem extends Component {
   }
 
   render() {
+    let color = '#45E51F';
+    if (!this.props.record.color)
+      if(this.props.record.color == 'RED')
+        color = '#DC143C';
     return (
       <div id="transactionItem" className="d-flex">
         <div className="column1">
@@ -66,7 +70,7 @@ class TransactionItem extends Component {
           <h4 className="title color-dark1">&nbsp;</ h4>
           <div>
             <svg width="17" height="7" viewBox="0 0 17 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" clipRule="evenodd" d="M11 7L17 3.5L11 0V3H0V4H11V7Z" fill="#01058A"/>
+              <path fillRule="evenodd" clipRule="evenodd" d="M11 7L17 3.5L11 0V3H0V4H11V7Z" fill={color}/>
             </svg>
           </div>
         </div>
