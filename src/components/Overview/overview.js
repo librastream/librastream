@@ -45,9 +45,7 @@ class Overview extends Component {
   }
 
   componentDidMount() {
-    console.log('Start');
     this.ws.onopen = () => {
-      console.log('connected');
     };
     this.ws.onmessage = (message) => {
       const server_data = JSON.parse(message.data);
@@ -63,8 +61,6 @@ class Overview extends Component {
 
       this.forceUpdate();
     };
-
-    console.log('End');
   }
 
   render() {

@@ -2,6 +2,7 @@ require('dotenv').config({ path: '../.env' });
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const express = require('express');
+const _ = require('lodash');
 let cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
@@ -59,17 +60,14 @@ app.get('/api/search/:searchWord', (req, res) => {
   let searchWord = req.params.searchWord;
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
-    console.log(searchWord);
-    let result = await collection.find({'version': Number.parseInt(searchWord)}).limit(1).toArray();
-    console.log(result);
+    let result = await collection.find({ 'version': Number.parseInt(searchWord) }).limit(1).toArray();
     if (result[0] !== undefined) {
-      return res.send({...result[0], type:'version'});
-    }
-    else {
-      result = await collection.find({'hash.signedTransaction': searchWord}).limit(1).toArray();
+      return res.send({ ...result[0], type: 'version' });
+    } else {
+      result = await collection.find({ 'hash.signedTransaction': searchWord }).toArray();
       if (result[0] !== undefined)
-        return res.send({...result[0], type:'tx'});
-      return res.send({'type': 'address'});
+        return res.send({ ...result[0], type: 'tx' });
+      return res.send({ 'type': 'address' });
     }
   });
 });
@@ -80,8 +78,29 @@ app.get('/api/:id', (req, res) => {
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
 
-    const result = await collection.find({'_id': Number.parseInt(id)}).limit(1).toArray();
-    return res.send({...result[0]});
+    const result = await collection.find({ '_id': Number.parseInt(id) }).limit(1).toArray();
+    return res.send({ ...result[0] });
+  });
+});
+
+app.get('/api/address/:searchWord', (req, res) => {
+  let searchWord = req.params.searchWord;
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+    const collection = client.db('explorer').collection('transactions');
+
+    let res1 = await collection.find({ 'sender.account': searchWord }).limit(1000).toArray();
+    let res2 = await collection.find({ 'arguments': { 'type': 1, 'data': searchWord } }).toArray();
+    const transactions = [...res1, ...res2];
+    const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
+
+    return res.send({
+      transactions,
+      'type': 'address',
+      'total_received': transactions.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
+      'final_balance': res1.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
+      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : ''
+    });
+    // }
   });
 });
 
@@ -91,8 +110,8 @@ app.get('/api/version/:arg', (req, res) => {
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
 
-    const result = await collection.find({'version': Number.parseInt(arg)}).limit(1).toArray();
-    return res.send({...result[0]});
+    const result = await collection.find({ 'sender.account': searchWords }).limit(1).toArray();
+    return res.send({ ...result[0] });
   });
 });
 
@@ -102,8 +121,8 @@ app.get('/api/tx/:arg', (req, res) => {
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
 
-    const result = await collection.find({'hash.signedTransaction': arg}).limit(1).toArray();
-    return res.send({...result[0]});
+    const result = await collection.find({ 'hash.signedTransaction': arg }).limit(1).toArray();
+    return res.send({ ...result[0] });
   });
 });
 
@@ -191,9 +210,9 @@ app.get('/api/tx/:arg', (req, res) => {
       };
       (async () => {
 
-        while (true) {
-          await tryAsync();
-        }
+        // while (true) {
+        //   await tryAsync();
+        // }
       })();
 
 

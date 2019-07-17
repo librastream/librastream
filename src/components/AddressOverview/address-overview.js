@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
-import TransactionItem from '../TransactionItem/transaction-item';
 import AddressItem from '../AddressItem/address-item';
 import QRCode from '../QRCode/qrcode';
 import './address-overview.scss';
 import axios from 'axios';
+import TransactionItem from '../TransactionItem/transaction-item';
 
 class AddressOverview extends Component {
 
   constructor(props) {
     super(props);
-    this.state ={
-    };
+    this.state = {};
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    const API_URL = `http://localhost:8999/api/${id}`;
+    const { arg } = this.props.match.params;
+    const API_URL = `http://localhost:8999/api/address/${arg}`;
     axios.get(API_URL)
       .then(res => {
-        this.setState({
-          id: id,
-          version: res.data.version
-        });
-      })
-      .catch(function(err) {
-        console.log(err);
+        let tmp = {...res.data, address: arg};
+        this.setState({record: tmp});
       });
   }
 
   render() {
+    let items=[];
+    if (!this.state.record) return null;
+    const { record } = this.state;
+
+      record.transactions.forEach((elem, idx, arry) => {
+        items.push(<TransactionItem record={elem} key={elem._id}/>);
+      });
     return (
       <div id="addressOverview">
         <div className="container">
@@ -41,7 +42,7 @@ class AddressOverview extends Component {
                   send bitcoins to another person.
                 </div>
               </div>
-              <AddressItem/>
+              <AddressItem record={this.state.record}/>
             </div>
 
             <div className="table w-50">
@@ -52,7 +53,7 @@ class AddressOverview extends Component {
           {/* section2 - table */}
           <div className="table">
             <div className="table__header">
-              <h5 className="title">Transactions</h5>
+              <h5 classender="title">Transactions</h5>
               <div className="subtitle">More than 500,000 transactions found</div>
               {/*<svg width="18" height="5" viewBox="0 0 18 5" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
               {/*  <path fillRule="evenodd" clipRule="evenodd"*/}
@@ -61,7 +62,7 @@ class AddressOverview extends Component {
               {/*</svg>*/}
             </div>
             <div className="table__body">
-
+              {items}
             </div>
             <div className="table__footer">
               <div className="status">

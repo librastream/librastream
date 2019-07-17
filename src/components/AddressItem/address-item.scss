@@ -17,4 +17,11 @@
   .content {
     width: 64%;
   }
+
+  .long_address {
+    max-width: 400px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+  }
 }
