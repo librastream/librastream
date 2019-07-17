@@ -16,6 +16,14 @@ svg {
   padding: 20px 30px;
 }
 
+.loading {
+  width: 100%;
+  min-height: calc(100vh - #{$height-footer} - #{$height-header});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   padding: 35px 0 60px;
   max-width: 1120px;

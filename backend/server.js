@@ -60,10 +60,17 @@ app.get('/api/search/:searchWord', (req, res) => {
   let searchWord = req.params.searchWord;
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
-    let result = await collection.find({ 'version': Number.parseInt(searchWord) }).limit(1).toArray();
+    let result = [];
+    if (!isNaN(searchWord)) {
+      result = await collection.find({ 'version': Number.parseInt(searchWord) }).limit(1).toArray();
+    }
+    console.log('start');
     if (result[0] !== undefined) {
+      console.log('in');
       return res.send({ ...result[0], type: 'version' });
     } else {
+      console.log('out');
+
       result = await collection.find({ 'hash.signedTransaction': searchWord }).toArray();
       if (result[0] !== undefined)
         return res.send({ ...result[0], type: 'tx' });
@@ -106,11 +113,9 @@ app.get('/api/address/:searchWord', (req, res) => {
 
 app.get('/api/version/:arg', (req, res) => {
   let arg = req.params.arg;
-  // return res.send({ 'search': req.params.searchWord });
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
-
-    const result = await collection.find({ 'sender.account': searchWords }).limit(1).toArray();
+    const result = await collection.find({ 'version': +arg }).limit(1).toArray();
     return res.send({ ...result[0] });
   });
 });
@@ -210,9 +215,9 @@ app.get('/api/tx/:arg', (req, res) => {
       };
       (async () => {
 
-        // while (true) {
-        //   await tryAsync();
-        // }
+        while (true) {
+          await tryAsync();
+        }
       })();
 
 

@@ -9,7 +9,9 @@ class AddressOverview extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoading: true
+    };
   }
 
   componentDidMount() {
@@ -18,11 +20,18 @@ class AddressOverview extends Component {
     axios.get(API_URL)
       .then(res => {
         let tmp = {...res.data, address: arg};
-        this.setState({record: tmp});
+        this.setState({
+          record: tmp,
+          isLoading: false
+        });
       });
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (<div className="loading">Loading...</div>)
+    }
+
     let items=[];
     if (!this.state.record) return null;
     const { record } = this.state;

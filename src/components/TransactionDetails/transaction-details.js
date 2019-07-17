@@ -56,9 +56,12 @@ class TransactionDetails extends Component {
 
     if (isLoading) return (
       <div className="transactionDetails__loading">
-        Loading transaction data ...
+        Loading ...
       </div>
     );
+    if (!data.hash)
+      return null;
+
     const timeBefore = moment(data.date).fromNow();
     const timeReadable = moment(data.date).format('MMM-DD-YYYY hh:mm:ss A');
 
