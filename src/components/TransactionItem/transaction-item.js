@@ -8,7 +8,7 @@ const secondsOld = (time) => {
   const now = Math.floor(Date.now() / 1000);
   const past = Math.floor(new Date(time).getTime() / 1000);
 
-  return now-past;
+  return past - now;
 };
 
 class TransactionItem extends Component {
@@ -37,7 +37,12 @@ class TransactionItem extends Component {
     this.props.history.push(`/version/${id}`);
     return 1;
   }
-
+  getLibra(){
+    let libra = Number(this.props.record.arguments[1].data) /  Math.pow(10,6);
+   
+    console.log("libs: ", Number(this.props.record.arguments[1].data), " COIN: ", libra)
+    return libra;
+  }
   render() {
     return (
       <div id="transactionItem" className="d-flex">
@@ -82,7 +87,7 @@ class TransactionItem extends Component {
         </div>
         <div className="column6">
           <h4 className="title color-dark1">Value</h4>
-          <div>{this.props.record.arguments[1].data} Libra</div>
+          <div>{this.getLibra()} Libra</div>
         </div>
         {/*<div className="column ">*/}
         {/*  <h4 className="title text-dark1">Status</h4>*/}
