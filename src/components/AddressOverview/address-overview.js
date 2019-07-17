@@ -39,7 +39,21 @@ class AddressOverview extends Component {
       });
   }
 
-  onShowSizeChange() {
+  onShowSizeChange(e) {
+    console.log("e",e);
+    this.setState({isLoadingTable: true});
+    this.setState({
+      currentPage: 1,
+    });
+    const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
+    axios.get(API_URL)
+      .then(res => {
+        this.setState({isLoadingTable: false});
+        let tmp = {...res.data, address: this.state.searchWord};
+        this.setState({
+          record: tmp
+        });
+      });
   }
 
   componentDidMount() {
@@ -125,8 +139,8 @@ class AddressOverview extends Component {
             </div>
             <div className="table__footer">
               <div className="status">
-                <input className="status__count" type="number" />
-                <div className="status__info">Show 10 per second.</div>
+                {/*<input className="status__count" type="text" value={this.state.pageSize} min="1" onChange={this.onShowSizeChange}/>*/}
+                {/*<div className="status__info">Show {this.state.pageSize} per second.</div>*/}
               </div>
               <div className="ml-auto flex-center-y">
                 <Pagination
