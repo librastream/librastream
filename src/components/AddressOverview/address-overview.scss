@@ -29,4 +29,20 @@
       }
     }
   }
+
+  .rc-pagination {
+    .rc-pagination-item {
+      background-color: $color-light2;
+      color: $color-light4;
+      border-radius: 9999px;
+    }
+
+    .rc-pagination-item-active {
+      background-color: $color-blue2;
+    }
+
+    .rc-pagination-next, .rc-pagination-prev {
+      border: none;
+    }
+  }
 }

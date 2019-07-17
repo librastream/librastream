@@ -21,7 +21,10 @@ class AddressOverview extends Component {
   }
 
   onChange(page) {
-    this.state.currentPage = page;
+    this.setState({
+      currentPage: page
+    });
+    // this.state.currentPage = page;
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
       .then(res => {
@@ -95,7 +98,7 @@ class AddressOverview extends Component {
                   pageSize={this.state.pageSize}
                   onShowSizeChange={this.onShowSizeChange}
                   onChange={this.onChange}
-                  defaultCurrent={this.state.currentPage}
+                  current={this.state.currentPage}
                   total={record.transactions_len}
                 />
               </div>
@@ -112,17 +115,17 @@ class AddressOverview extends Component {
               <div className="status">
                 <input className="status__count" type="number"/>
                 <div className="status__info">Show 10 per second.</div>
-                <div className="ml-auto flex-center-y">
-                  <Pagination
-                    // selectComponentClass={Select}
-                    showSizeChanger
-                    pageSize={this.state.pageSize}
-                    onShowSizeChange={this.onShowSizeChange}
-                    onChange={this.onChange}
-                    defaultCurrent={this.state.currentPage}
-                    total={record.transactions_len}
-                  />
-                </div>
+              </div>
+              <div className="ml-auto flex-center-y">
+                <Pagination
+                  // selectComponentClass={Select}
+                  showSizeChanger
+                  pageSize={this.state.pageSize}
+                  onShowSizeChange={this.onShowSizeChange}
+                  onChange={this.onChange}
+                  current={this.state.currentPage}
+                  total={record.transactions_len}
+                />
               </div>
             </div>
           </div>

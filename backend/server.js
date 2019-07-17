@@ -114,7 +114,7 @@ app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
       'total_received': transactions.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
       'final_balance': res1.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
       'sequence': lastTxn ? lastTxn.sender.sequenceNumber : '',
-      'color': color
+      'color': color,
     });
     // }
   });
