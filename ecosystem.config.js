@@ -24,7 +24,7 @@ module.exports = {
       ref: 'origin/dev',
       repo: 'git@github.com:librastream/librastream.git',
       path: '/var/www/librastream',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
     }
   }
 };

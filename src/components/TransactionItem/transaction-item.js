@@ -8,7 +8,7 @@ const secondsOld = (time) => {
   const now = Math.floor(Date.now() / 1000);
   const past = Math.floor(new Date(time).getTime() / 1000);
 
-  return now-past;
+  return past - now;
 };
 
 class TransactionItem extends Component {
@@ -16,14 +16,20 @@ class TransactionItem extends Component {
     super(props);
     this.state = {};
     this.gotoDetails = this.gotoDetails.bind(this);
-    this.gotoAddress = this.gotoAddress.bind(this);
+
+    this.gotoFromAddress = this.gotoFromAddress.bind(this);
+    this.gotoToAddress = this.gotoFromAddress.bind(this);
   }
 
-  gotoAddress() {
+  gotoFromAddress() {
+    let address = this.props.record.sender.account;
+    this.props.history.push(`/address/${address}`);
+    return 1;
+  }
+  gotoToAddress(){
     let address = this.props.record.arguments[0].data;
     this.props.history.push(`/address/${address}`);
     return 1;
-
   }
 
   gotoDetails() {
@@ -31,7 +37,12 @@ class TransactionItem extends Component {
     this.props.history.push(`/version/${id}`);
     return 1;
   }
-
+  getLibra(){
+    let libra = Number(this.props.record.arguments[1].data) /  Math.pow(10,6);
+   
+    console.log("libs: ", Number(this.props.record.arguments[1].data), " COIN: ", libra)
+    return libra;
+  }
   render() {
     let color = '#45E51F';
     if (!this.props.record.color)
@@ -62,7 +73,7 @@ class TransactionItem extends Component {
         </div>
         <div className="column3">
           <h4 className="title color-dark1">From</h4>
-          <div onClick={this.gotoAddress} className="cursor-pointer">
+          <div onClick={this.gotoFromAddress} className="cursor-pointer">
             <span className="to_and_from">{this.props.record.sender.account}</span>
           </div>
         </div>
@@ -76,11 +87,11 @@ class TransactionItem extends Component {
         </div>
         <div className="column5">
           <h4 className="title color-dark1">To</h4>
-          <div onClick={this.gotoAddress} className="to_and_from cursor-pointer">{this.props.record.arguments[0].data}</div>
+          <div onClick={this.gotoToAddress} className="to_and_from cursor-pointer">{this.props.record.arguments[0].data}</div>
         </div>
         <div className="column6">
           <h4 className="title color-dark1">Value</h4>
-          <div>{this.props.record.arguments[1].data} Libra</div>
+          <div>{this.getLibra()} Libra</div>
         </div>
         {/*<div className="column ">*/}
         {/*  <h4 className="title text-dark1">Status</h4>*/}
