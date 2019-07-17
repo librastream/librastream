@@ -104,6 +104,7 @@ app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
     let res2 = await collection.find({ 'arguments': { 'type': 1, 'data': searchWord } }).toArray();
     const transactions = [...res1, ...res2];
     const transactions_len = transactions.length;
+    console.log(pageSize, currentPage);
     let sub_transactions = transactions.slice(pageSize * (currentPage - 1), pageSize * currentPage);
     const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
 

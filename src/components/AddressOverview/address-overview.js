@@ -23,10 +23,8 @@ class AddressOverview extends Component {
   }
 
   onChange(page) {
+    this.state.currentPage = page;
     this.setState({isLoadingTable: true});
-    this.setState({
-      currentPage: page,
-    });
     // this.state.currentPage = page;
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
@@ -39,12 +37,10 @@ class AddressOverview extends Component {
       });
   }
 
-  onShowSizeChange(e) {
-    console.log("e",e);
+  onShowSizeChange(event) {
+    this.state.pageSize = Number.parseInt(event.target.value);
+    this.state.currentPage = 1;
     this.setState({isLoadingTable: true});
-    this.setState({
-      currentPage: 1,
-    });
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
       .then(res => {
@@ -139,8 +135,8 @@ class AddressOverview extends Component {
             </div>
             <div className="table__footer">
               <div className="status">
-                {/*<input className="status__count" type="text" value={this.state.pageSize} min="1" onChange={this.onShowSizeChange}/>*/}
-                {/*<div className="status__info">Show {this.state.pageSize} per second.</div>*/}
+                <input className="status__count" type="number" value={this.state.pageSize} min="1" onChange={this.onShowSizeChange}/>
+                <div className="status__info">Show {this.state.pageSize} per second.</div>
               </div>
               <div className="ml-auto flex-center-y">
                 <Pagination
