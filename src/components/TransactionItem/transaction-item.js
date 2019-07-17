@@ -16,14 +16,20 @@ class TransactionItem extends Component {
     super(props);
     this.state = {};
     this.gotoDetails = this.gotoDetails.bind(this);
-    this.gotoAddress = this.gotoAddress.bind(this);
+
+    this.gotoFromAddress = this.gotoFromAddress.bind(this);
+    this.gotoToAddress = this.gotoFromAddress.bind(this);
   }
 
-  gotoAddress() {
+  gotoFromAddress() {
+    let address = this.props.record.sender.account;
+    this.props.history.push(`/address/${address}`);
+    return 1;
+  }
+  gotoToAddress(){
     let address = this.props.record.arguments[0].data;
     this.props.history.push(`/address/${address}`);
     return 1;
-
   }
 
   gotoDetails() {
@@ -58,7 +64,7 @@ class TransactionItem extends Component {
         </div>
         <div className="column3">
           <h4 className="title color-dark1">From</h4>
-          <div onClick={this.gotoAddress} className="cursor-pointer">
+          <div onClick={this.gotoFromAddress} className="cursor-pointer">
             <span className="to_and_from">{this.props.record.sender.account}</span>
           </div>
         </div>
@@ -72,7 +78,7 @@ class TransactionItem extends Component {
         </div>
         <div className="column5">
           <h4 className="title color-dark1">To</h4>
-          <div onClick={this.gotoAddress} className="to_and_from cursor-pointer">{this.props.record.arguments[0].data}</div>
+          <div onClick={this.gotoToAddress} className="to_and_from cursor-pointer">{this.props.record.arguments[0].data}</div>
         </div>
         <div className="column6">
           <h4 className="title color-dark1">Value</h4>
