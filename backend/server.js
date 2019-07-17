@@ -90,22 +90,31 @@ app.get('/api/:id', (req, res) => {
   });
 });
 
-app.get('/api/address/:searchWord', (req, res) => {
+app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
   let searchWord = req.params.searchWord;
+  let pageSize = req.params.pageSize;
+  let currentPage = req.params.currentPage;
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
 
     let res1 = await collection.find({ 'sender.account': searchWord }).limit(1000).toArray();
+    let color='GREEN';
+    if (res1.length > 0)
+      color = 'RED';
     let res2 = await collection.find({ 'arguments': { 'type': 1, 'data': searchWord } }).toArray();
     const transactions = [...res1, ...res2];
+    const transactions_len = transactions.length;
+    let sub_transactions = transactions.slice(pageSize * (currentPage - 1), pageSize * currentPage);
     const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
 
     return res.send({
-      transactions,
+      sub_transactions,
+      transactions_len,
       'type': 'address',
       'total_received': transactions.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
       'final_balance': res1.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
-      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : ''
+      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : '',
+      'color': color
     });
     // }
   });
