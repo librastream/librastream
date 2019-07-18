@@ -7,6 +7,7 @@ import QRCode from '../QRCode/qrcode';
 import TransactionItem from '../TransactionItem/transaction-item';
 import './address-overview.scss';
 import Spinner from 'react-bootstrap/Spinner';
+
 class AddressOverview extends Component {
 
   constructor(props) {
@@ -24,13 +25,13 @@ class AddressOverview extends Component {
 
   onChange(page) {
     this.state.currentPage = page;
-    this.setState({isLoadingTable: true});
+    this.setState({ isLoadingTable: true });
     // this.state.currentPage = page;
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
       .then(res => {
-        this.setState({isLoadingTable: false});
-        let tmp = {...res.data, address: this.state.searchWord};
+        this.setState({ isLoadingTable: false });
+        let tmp = { ...res.data, address: this.state.searchWord };
         this.setState({
           record: tmp
         });
@@ -40,12 +41,12 @@ class AddressOverview extends Component {
   onShowSizeChange(event) {
     this.state.pageSize = Number.parseInt(event.target.value);
     this.state.currentPage = 1;
-    this.setState({isLoadingTable: true});
+    this.setState({ isLoadingTable: true });
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
       .then(res => {
-        this.setState({isLoadingTable: false});
-        let tmp = {...res.data, address: this.state.searchWord};
+        this.setState({ isLoadingTable: false });
+        let tmp = { ...res.data, address: this.state.searchWord };
         this.setState({
           record: tmp
         });
@@ -54,10 +55,10 @@ class AddressOverview extends Component {
 
   componentDidMount() {
     const { arg } = this.props.match.params;
-    const API_URL = `http://localhost:8999/api/address/${arg}/6/1`;
+    const API_URL = `http://localhost:8999/api/address/${arg}/6`;
     axios.get(API_URL)
       .then(res => {
-        let tmp = {...res.data, address: arg};
+        let tmp = { ...res.data, address: arg };
         this.setState({
           record: tmp,
           isLoading: false,
@@ -70,7 +71,7 @@ class AddressOverview extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return (<div className="loading">Loading...</div>)
+      return (<div className="loading">Loading...</div>);
     }
 
     let loading = '';
@@ -79,11 +80,10 @@ class AddressOverview extends Component {
       loading = <Spinner style={style} animation="border" variant="secondary"/>;
     }
 
-    let items=[];
+    let items = [];
     if (!this.state.record) return null;
     const { record } = this.state;
-    console.log("record", record);
-    record.sub_transactions.forEach((elem, idx, arry) => {
+    record.total_array.forEach((elem, idx, arry) => {
       items.push(<TransactionItem record={elem} key={elem._id}/>);
     });
     return (
@@ -135,7 +135,8 @@ class AddressOverview extends Component {
             </div>
             <div className="table__footer">
               <div className="status">
-                <input className="status__count" type="number" value={this.state.pageSize} min="1" onChange={this.onShowSizeChange}/>
+                <input className="status__count" type="number" value={this.state.pageSize} min="1"
+                       onChange={this.onShowSizeChange}/>
                 <div className="status__info">Show {this.state.pageSize} per second.</div>
               </div>
               <div className="ml-auto flex-center-y">

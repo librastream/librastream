@@ -57,6 +57,7 @@ var libraClient = new libra.Client('ac.testnet.libra.org:8000');
 
 
 app.get('/api/search/:searchWord', (req, res) => {
+  statest = '';
   let searchWord = req.params.searchWord;
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
@@ -90,32 +91,125 @@ app.get('/api/:id', (req, res) => {
   });
 });
 
-app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
-  let searchWord = req.params.searchWord;
-  let pageSize = req.params.pageSize;
-  let currentPage = req.params.currentPage;
+app.get('/api/address/:searchWord/:pageSize', (req, res) => {
+  let
+    searchWord = req.params.searchWord,
+    pageSize = Number.parseInt(req.params.pageSize);
+
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
+    let total_num = await collection.aggregate([
+      {
+        $match: {
+          $or: [
+            { 'sender.account': searchWord },
+            { 'arguments.0.data': searchWord }
+          ]
+        }
+      }, {
+        $project: { 'arguments': 1 }
+      }, {
+        $addFields: {
+          argument1Data: {
+            $arrayElemAt: ['$arguments', 1]
+          }
+        }
+      }, {
+        $group: {
+          _id: null,
+          sum: {
+            $sum: '$argument1Data.data'
+          },
+          count: {
+            $sum: 1
+          }
+        }
+      }]).toArray();
+    let total_array = await collection.aggregate([
+      {
+        $match: {
+          $or: [
+            { 'sender.account': searchWord },
+            { 'arguments.0.data': searchWord }
+          ]
+        }
+      }, {
+        $limit: pageSize
+      }]).toArray();
+    let sender_num = await collection.aggregate([
+      {
+        $match: {
+          'sender.account': searchWord
+        }
+      }, {
+        $project: { 'arguments': 1 }
+      }, {
+        $addFields: {
+          argument1Data: {
+            $arrayElemAt: ['$arguments', 1]
+          }
+        }
+      }, {
+        $group: {
+          _id: null,
+          sum: {
+            $sum: '$argument1Data.data'
+          }
+        }
+      }]).toArray();
+    let color = 'GREEN';
+    // const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
 
-    let res1 = await collection.find({ 'sender.account': searchWord }).limit(1000).toArray();
-    let color='GREEN';
-    if (res1.length > 0)
-      color = 'RED';
-    let res2 = await collection.find({ 'arguments': { 'type': 1, 'data': searchWord } }).toArray();
-    const transactions = [...res1, ...res2];
+    let
+      total_count = (total_num[0] == undefined) ? 0 : total_num[0].count,
+      total_sum = (total_num[0] == undefined) ? 0 : total_num[0].sum,
+      sender_sum = (sender_num[0] == undefined) ? 0 : sender_num[0].sum;
+
+    return res.send({
+      total_array,
+      'transactions_length': total_count,
+      'type': 'address',
+      'total_received': total_sum,
+      'final_balance': sender_sum,
+      'sequence': 1 //lastTxn ? lastTxn.sender.sequenceNumber : '',
+      // 'color': color,
+    });
+    // }
+  });
+});
+
+app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
+  let searchWord = req.params.searchWord;
+  let pageSize = Number.parseInt(req.params.pageSize);
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+    const collection = client.db('explorer').collection('transactions');
+    let result_array = await collection.find(
+      {
+        $or: [
+          { 'sender.account': searchWord },
+          { 'arguments.0.data': searchWord }
+        ]
+      }).limit(pageSize).toArray();
+    console.log('Start res1');
+    console.log(res1);
+    console.log('End res1');
+    // let color='GREEN';
+    // if (res1.length > 0)
+    //   color = 'RED';
+    // const transactions = [...res1, ...res2];
     const transactions_len = transactions.length;
     console.log(pageSize, currentPage);
     let sub_transactions = transactions.slice(pageSize * (currentPage - 1), pageSize * currentPage);
     const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
 
     return res.send({
-      sub_transactions,
+      result_array,
       transactions_len,
       'type': 'address',
-      'total_received': transactions.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
+      'total_received': result_array.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
       'final_balance': res1.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
-      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : '',
-      'color': color,
+      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : ''
+      // 'color': color,
     });
     // }
   });
@@ -225,9 +319,9 @@ app.get('/api/tx/:arg', (req, res) => {
       };
       (async () => {
 
-        while (true) {
-          await tryAsync();
-        }
+        // while (true) {
+        //   await tryAsync();
+        // }
       })();
 
 

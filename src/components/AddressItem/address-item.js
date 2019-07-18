@@ -64,7 +64,8 @@ class AddressItem extends Component {
       <div className="item flex-center-y">
         <h4 className="title color-dark1 a26">Sequence</h4>
         <div className="content">
-          <span>{record.sequence}</span>
+          <span>1</span>
+          {/*<span>{record.sequence}</span>*/}
         </div>
       </div>
     </div>
