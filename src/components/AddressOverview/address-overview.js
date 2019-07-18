@@ -130,7 +130,7 @@ class AddressOverview extends Component {
             </div>
             <div className={`table__body ${this.state.isLoadingTable ? 'blur' : ''}`}>
               {loading}
-              <div className={`transparent ${this.state.isLoadingTable ? 'a26' : ''}`}></div>
+              {/*<div className={`transparent ${this.state.isLoadingTable ? 'a26' : ''}`}/>*/}
               {items}
             </div>
             <div className="table__footer">

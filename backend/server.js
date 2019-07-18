@@ -91,11 +91,14 @@ app.get('/api/:id', (req, res) => {
   });
 });
 
+// initial entry point on `Address Overview`
 app.get('/api/address/:searchWord/:pageSize', (req, res) => {
+  // arguments
   let
     searchWord = req.params.searchWord,
     pageSize = Number.parseInt(req.params.pageSize);
 
+  // mongo db queries
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
     let total_num = await collection.aggregate([
@@ -134,6 +137,8 @@ app.get('/api/address/:searchWord/:pageSize', (req, res) => {
           ]
         }
       }, {
+        $sort: { 'date': -1 }
+      }, {
         $limit: pageSize
       }]).toArray();
     let sender_num = await collection.aggregate([
@@ -157,61 +162,77 @@ app.get('/api/address/:searchWord/:pageSize', (req, res) => {
           }
         }
       }]).toArray();
+
     let color = 'GREEN';
-    // const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
 
+    // return values
     let
-      total_count = (total_num[0] == undefined) ? 0 : total_num[0].count,
-      total_sum = (total_num[0] == undefined) ? 0 : total_num[0].sum,
-      sender_sum = (sender_num[0] == undefined) ? 0 : sender_num[0].sum;
+      total_count = (total_num[0] === undefined) ? 0 : total_num[0].count,
+      total_sum = (total_num[0] === undefined) ? 0 : total_num[0].sum,
+      sender_sum = (sender_num[0] === undefined) ? 0 : sender_num[0].sum,
+      sequence_num = (total_array.length === 0) ? '' : total_array[0].sender.sequenceNumber;
 
+    // response
     return res.send({
       total_array,
       'transactions_length': total_count,
       'type': 'address',
       'total_received': total_sum,
       'final_balance': sender_sum,
-      'sequence': 1 //lastTxn ? lastTxn.sender.sequenceNumber : '',
+      'sequence': sequence_num
       // 'color': color,
     });
-    // }
   });
 });
 
+// pagination entry point on `Address Overview`
 app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
-  let searchWord = req.params.searchWord;
-  let pageSize = Number.parseInt(req.params.pageSize);
+  // arguments
+  let
+    searchWord = req.params.searchWord,
+    pageSize = Number.parseInt(req.params.pageSize),
+    currentPage = Number.parseInt(req.params.currentPage);
+
+  // constants
+  const skip_num = pageSize * (currentPage - 1);
+
+  //db queries
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
-    let result_array = await collection.find(
+    let txn_array = await collection.find(
       {
         $or: [
           { 'sender.account': searchWord },
           { 'arguments.0.data': searchWord }
         ]
-      }).limit(pageSize).toArray();
-    console.log('Start res1');
-    console.log(res1);
-    console.log('End res1');
-    // let color='GREEN';
-    // if (res1.length > 0)
-    //   color = 'RED';
-    // const transactions = [...res1, ...res2];
-    const transactions_len = transactions.length;
-    console.log(pageSize, currentPage);
-    let sub_transactions = transactions.slice(pageSize * (currentPage - 1), pageSize * currentPage);
-    const lastTxn = _.maxBy(res1, txn => new Date(txn.date).getTime());
+      }).sort({ 'date': -1 }).skip(skip_num).limit(pageSize).toArray();
+    let total_count = await collection.aggregate(
+      {
+        $match: {
+          $or: [
+            { 'sender.account': searchWord },
+            { 'arguments.0.data': searchWord }
+          ]
+        }
+      }, {
+        $group: {
+          '_id': null,
+          'count': { $sum: 1 }
+        }
+      });
 
+    // let color='GREEN';
+
+    // retrn values
+    const total_len = (total_count[0] === undefined) ? 0 : total_count[0].count;
+
+    //response
     return res.send({
-      result_array,
-      transactions_len,
-      'type': 'address',
-      'total_received': result_array.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
-      'final_balance': res1.reduce((sum, tx) => sum + tx.arguments[1].data, 0),
-      'sequence': lastTxn ? lastTxn.sender.sequenceNumber : ''
-      // 'color': color,
+      type: 'pagination',
+      txn_array,
+      total_len,
+      // color: 'color'
     });
-    // }
   });
 });
 
