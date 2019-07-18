@@ -219,7 +219,7 @@ app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
           '_id': null,
           'count': { $sum: 1 }
         }
-      });
+      }).toArray();
 
     // let color='GREEN';
 
