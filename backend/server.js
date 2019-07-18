@@ -175,7 +175,7 @@ app.get('/api/address/:searchWord/:pageSize', (req, res) => {
     // response
     return res.send({
       total_array,
-      'transactions_length': total_count,
+      'total_len': total_count,
       'type': 'address',
       'total_received': total_sum,
       'final_balance': sender_sum,
@@ -192,21 +192,30 @@ app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
     searchWord = req.params.searchWord,
     pageSize = Number.parseInt(req.params.pageSize),
     currentPage = Number.parseInt(req.params.currentPage);
-
+  console.log('==================');
+  console.log(searchWord, pageSize, currentPage);
+  console.log('============');
   // constants
-  const skip_num = pageSize * (currentPage - 1);
+  const skip = pageSize * (currentPage - 1);
 
   //db queries
   MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
-    let txn_array = await collection.find(
+    console.log(await collection.listIndexes().toArray());
+    let total_array = await collection.find(
       {
         $or: [
           { 'sender.account': searchWord },
           { 'arguments.0.data': searchWord }
         ]
-      }).sort({ 'date': -1 }).skip(skip_num).limit(pageSize).toArray();
-    let total_count = await collection.aggregate(
+      },
+      {
+        sort: { 'date': -1 },
+        skip,
+        limit: pageSize,
+
+      }).toArray();
+    let total_count = await collection.aggregate([
       {
         $match: {
           $or: [
@@ -219,18 +228,18 @@ app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
           '_id': null,
           'count': { $sum: 1 }
         }
-      }).toArray();
+      }]).toArray();
 
     // let color='GREEN';
-
+    console.log(total_count);
     // retrn values
     const total_len = (total_count[0] === undefined) ? 0 : total_count[0].count;
 
     //response
     return res.send({
       type: 'pagination',
-      txn_array,
-      total_len,
+      total_array,
+      total_len
       // color: 'color'
     });
   });

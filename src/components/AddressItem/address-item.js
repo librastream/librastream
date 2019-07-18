@@ -58,7 +58,7 @@ class AddressItem extends Component {
       <div className="item flex-center-y">
         <h4 className="title color-dark1 a26">No. Transactions</h4>
         <div className="content">
-          <span>{record.transactions_length}</span>
+          <span>{record.total_len}</span>
         </div>
       </div>
       <div className="item flex-center-y">

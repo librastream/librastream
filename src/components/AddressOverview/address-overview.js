@@ -26,10 +26,12 @@ class AddressOverview extends Component {
   onChange(page) {
     this.state.currentPage = page;
     this.setState({ isLoadingTable: true });
-    // this.state.currentPage = page;
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
       .then(res => {
+      console.log("===========");
+        console.log("res");
+        console.log("===========");
         this.setState({ isLoadingTable: false });
         let tmp = { ...res.data, address: this.state.searchWord };
         this.setState({
@@ -119,7 +121,7 @@ class AddressOverview extends Component {
                   onShowSizeChange={this.onShowSizeChange}
                   onChange={this.onChange}
                   current={this.state.currentPage}
-                  total={record.transactions_len}
+                  total={record.total_len}
                 />
               </div>
               {/*<svg width="18" height="5" viewBox="0 0 18 5" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
@@ -147,7 +149,7 @@ class AddressOverview extends Component {
                   onShowSizeChange={this.onShowSizeChange}
                   onChange={this.onChange}
                   current={this.state.currentPage}
-                  total={record.transactions_len}
+                  total={record.total_len}
                 />
               </div>
             </div>
