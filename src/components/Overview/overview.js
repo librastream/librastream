@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Spinner from 'react-bootstrap/Spinner';
-import axios from 'axios';
 
 import TransactionItem from '../TransactionItem/transaction-item';
 import Switch from '../SwitchButton/switch-button';
@@ -25,26 +24,27 @@ class Overview extends Component {
 
   onChangeSearchWord(e) {
     this.setState({
-      searchWord: e.target.value,
+      searchWord: e.target.value
     });
   };
 
-  onHandleKeyPress(e){
-    if(e.key == "Enter"){
-     this.searchTxn();
+  onHandleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.searchTxn();
     }
   }
 
   searchTxn() {
-    if(!isNaN(this.state.searchWord.replace(" ", ""))){
+    let searchWordLen = this.state.searchWord.length;
+    if (searchWordLen != 64 && !isNaN(this.state.searchWord.replace(' ', ''))) {
       this.props.history.push(`/version/${this.state.searchWord}`);
-    }else{
-      if(this.state.searchWord.length == 64){
+    } else {
+      if (searchWordLen == 64) {
         this.props.history.push(`/address/${this.state.searchWord}`);
       }
     }
-   // this.setState({isLoading: true});
-  //if(isNaN())
+    // this.setState({isLoading: true});
+    //if(isNaN())
     // const API_URL =
     //   `http://localhost:8999/api/search/${this.state.searchWord}`;
     // axios.get(API_URL)
