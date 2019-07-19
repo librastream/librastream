@@ -99,7 +99,7 @@ app.get('/api/address/:searchWord/:pageSize', (req, res) => {
     pageSize = Number.parseInt(req.params.pageSize);
 
   // mongo db queries
-  MongoClient.connect(process.env.DATABASE, async function(err, c1lient) {
+  MongoClient.connect(process.env.DATABASE, async function(err, client) {
     const collection = client.db('explorer').collection('transactions');
     let total_num = await collection.aggregate([
       {
