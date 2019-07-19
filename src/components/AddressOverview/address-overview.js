@@ -16,6 +16,7 @@ class AddressOverview extends Component {
       isLoading: true,
       isLoadingTable: false,
       pageSize: 6,
+
       defaultCurrent: 1,
       total: 0
     };
@@ -29,9 +30,6 @@ class AddressOverview extends Component {
     const API_URL = `http://localhost:8999/api/address/${this.state.searchWord}/${this.state.pageSize}/${this.state.currentPage}`;
     axios.get(API_URL)
       .then(res => {
-      console.log("===========");
-        console.log("res");
-        console.log("===========");
         this.setState({ isLoadingTable: false });
         let tmp = { ...res.data, address: this.state.searchWord };
         this.setState({

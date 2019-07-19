@@ -99,7 +99,7 @@ app.get('/api/address/:searchWord/:pageSize', (req, res) => {
     pageSize = Number.parseInt(req.params.pageSize);
 
   // mongo db queries
-  MongoClient.connect(process.env.DATABASE, async function(err, client) {
+  MongoClient.connect(process.env.DATABASE, async function(err, c1lient) {
     const collection = client.db('explorer').collection('transactions');
     let total_num = await collection.aggregate([
       {
@@ -213,6 +213,7 @@ app.get('/api/address/:searchWord/:pageSize/:currentPage', (req, res) => {
         sort: { 'date': -1 },
         skip,
         limit: pageSize,
+
 
       }).toArray();
     let total_count = await collection.aggregate([
@@ -349,9 +350,9 @@ app.get('/api/tx/:arg', (req, res) => {
       };
       (async () => {
 
-        // while (true) {
-        //   await tryAsync();
-        // }
+        while (true) {
+          await tryAsync();
+        }
       })();
 
 

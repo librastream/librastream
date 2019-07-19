@@ -43,6 +43,7 @@ class Overview extends Component {
         this.props.history.push(`/address/${this.state.searchWord}`);
       }
     }
+
     // this.setState({isLoading: true});
     //if(isNaN())
     // const API_URL =
@@ -73,9 +74,9 @@ class Overview extends Component {
 
         this.transactionTable.splice(100);
       }
-
-      this.forceUpdate();
     };
+    console.log(this);
+    setInterval(() => this.forceUpdate(), 1000);
   }
 
   render() {
