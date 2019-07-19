@@ -1,14 +1,47 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { withRouter } from 'react-router';
 
 import './transaction-item.scss';
-import axios from 'axios';
+
+const timeFormat = (val, type) => {
+  const format = {
+    'd': 'day',
+    'h': 'hour',
+    'm': 'minute',
+    's': 'sec',
+  };
+
+  if (val < 0) return 'error';
+  else if (val === 0) return '';
+  else if (val === 1) return `${val} ${format[type]}`;
+  else return `${val} ${format[type]}s`;
+};
 
 const secondsOld = (time) => {
-  const now = Math.floor(Date.now() / 1000);
-  const past = Math.floor(new Date(time).getTime() / 1000);
+  let
+    ms = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').diff(moment(time, 'DD/MM/YYYY HH:mm:ss')),
+    d = moment.duration(ms);
 
-  return past - now;
+  let
+    hours = Math.floor(d.asHours()),
+    minutes = moment.utc(ms).minutes(),
+    seconds = moment.utc(ms).seconds(),
+    days = Math.floor(hours / 24),
+    time_str = '...';
+  hours -= days * 24;
+
+  if (days > 0)
+    return`${timeFormat(days, 'd')} ${timeFormat(hours, 'h')} ago`;
+  else if (hours > 0)
+    return `${timeFormat(hours, 'h')} ${timeFormat(minutes, 'm')} ago`;
+  else if (minutes > 0)
+    return `${timeFormat(minutes, 'm')} ago`;
+  else if (seconds > 10)
+    return `${timeFormat(seconds, 's')} ago`;
+  else {
+    return `few secs ago`;
+  }
 };
 
 class TransactionItem extends Component {
@@ -26,7 +59,8 @@ class TransactionItem extends Component {
     this.props.history.push(`/address/${address}`);
     return 1;
   }
-  gotoToAddress(){
+
+  gotoToAddress() {
     let address = this.props.record.arguments[0].data;
     this.props.history.push(`/address/${address}`);
     return 1;
@@ -37,16 +71,18 @@ class TransactionItem extends Component {
     this.props.history.push(`/version/${id}`);
     return 1;
   }
-  getLibra(){
-    let libra = Number(this.props.record.arguments[1].data) /  Math.pow(10,6);
-   
-    console.log("libs: ", Number(this.props.record.arguments[1].data), " COIN: ", libra)
+
+  getLibra() {
+    let libra = Number(this.props.record.arguments[1].data) / Math.pow(10, 6);
+
+    console.log('libs: ', Number(this.props.record.arguments[1].data), ' COIN: ', libra);
     return libra;
   }
+
   render() {
     let color = '#45E51F';
     if (!this.props.record.color)
-      if(this.props.record.color == 'RED')
+      if (this.props.record.color == 'RED')
         color = '#DC143C';
     return (
       <div id="transactionItem" className="d-flex">
@@ -69,7 +105,7 @@ class TransactionItem extends Component {
         </div>
         <div className="column2">
           <h4 className="title color-dark1">Age</h4>
-          <div className="content">{secondsOld(this.props.record.date)} Secs Ago</div>
+          <div className="content">{secondsOld(this.props.record.date)}</div>
         </div>
         <div className="column3">
           <h4 className="title color-dark1">From</h4>
@@ -87,7 +123,8 @@ class TransactionItem extends Component {
         </div>
         <div className="column5">
           <h4 className="title color-dark1">To</h4>
-          <div onClick={this.gotoToAddress} className="to_and_from cursor-pointer">{this.props.record.arguments[0].data}</div>
+          <div onClick={this.gotoToAddress}
+               className="to_and_from cursor-pointer">{this.props.record.arguments[0].data}</div>
         </div>
         <div className="column6">
           <h4 className="title color-dark1">Value</h4>
