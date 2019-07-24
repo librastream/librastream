@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'Libra Blockchain Explorer',
-    script: 'npm start',
+    script: 'npm start && cd backend && npm start',
     instances: 1,
     autorestart: true,
     watch: false,
@@ -24,7 +24,7 @@ module.exports = {
       ref: 'origin/dev',
       repo: 'git@github.com:librastream/librastream.git',
       path: '/var/www/librastream',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy': 'npm install && cd backend && npm install && cd .. && pm2 reload ecosystem.config.js --env production',
     }
   }
 };
