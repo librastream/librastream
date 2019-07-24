@@ -1,0 +1,15 @@
+@import '../../styles/imports/index';
+
+#qrcode {
+  background-color: $color-light2;
+  display: flex;
+  justify-content: center;
+  padding: 36px;
+
+  .qrcode {
+    background-image: url('../../assets/images/qrcode.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

@@ -1,0 +1,14 @@
+@import 'imports/index';
+
+// card
+.card {
+  background-color: $color-white;
+  border: $border-gray1;
+  border-radius: 6px;
+  height: calc(100% - 55px);
+  position: relative;
+
+  &:hover {
+    box-shadow: $box-shadow-card;
+  }
+}

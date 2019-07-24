@@ -1,0 +1,39 @@
+@import '../../styles/imports/index';
+
+#footer {
+  background: $color-white;
+  border-top: $border-gray1;
+  box-shadow: $box-shadow-footer;
+
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 0;
+  }
+
+  .content {
+    border-bottom: $border-gray1;
+    height: $height-footer--content;
+
+    .section {
+      &__main {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      &__sec {
+        font-size: 14px;
+      }
+
+      .link > svg {
+        margin-left: 12px;
+        margin-right: 0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .info {
+    height: $height-footer--info;
+  }
+}

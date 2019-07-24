@@ -1,0 +1,46 @@
+@import "../../styles/imports/index";
+
+#header {
+  background-color: $color-white;
+  border-bottom: $border-gray1;
+  height: $height-header;
+
+  .navbar {
+    a {
+      display: flex;
+      height: 100%;
+      text-decoration: none;
+
+      h4 {
+        line-height: 4.5;
+      }
+    }
+  }
+
+  .setting {
+    .setting__item {
+      border-right: $border-gray1;
+
+      .signup-btn {
+        width: 130px;
+        height: 50px;
+      }
+    }
+
+    a {
+      line-height: 4;
+      height: 100%;
+      padding: 0 25px;
+      border-right: $border-gray1;
+
+      &:first-of-type {
+        border-left: $border-gray1;
+      }
+    }
+
+    #badge {
+      position: absolute;
+      top: 10px;
+    }
+  }
+}

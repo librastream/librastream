@@ -1,0 +1,29 @@
+@import '../../styles/imports/variables';
+@import '../../styles/typography';
+
+#profile {
+  align-items: center;
+  display: flex;
+  min-width: 230px;
+
+  img {
+    background-color: $color_secondary;
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-right: 20px;
+  }
+
+  .desc {
+    margin-right: 20px;
+
+    .name {
+      color: $color-dark1;
+      font-size: 15px;
+    }
+
+    .occupation {
+      color: $color-light5;
+      font-size: 12px;
+    }
+  }
+}

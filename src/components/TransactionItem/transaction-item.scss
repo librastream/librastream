@@ -1,0 +1,62 @@
+@import '../../styles/imports/index';
+
+#transactionItem {
+  background: $color-white;
+  border-bottom: $border-gray1;
+  font-size: 14px;
+  min-height: 116px;
+  padding: 20px 25px;
+
+  &:hover {
+    box-shadow: $box-shadow-hover;
+  }
+
+  .title {
+    opacity: .26;
+    margin-bottom: 30px;
+  }
+
+  .column1 {
+    flex-grow: 27;
+
+  }
+
+  .column2 {
+    color: $color-dark2;
+    flex-grow: 12;
+  }
+
+  .column3 {
+    color: $color-blue6;
+    flex-grow: 17;
+
+  }
+
+  .column4 {
+    color: $color-blue6;
+    flex-grow: 5;
+
+  }
+
+  .column5 {
+    color: $color-blue6;
+    flex-grow: 17;
+  }
+
+  .column6 {
+    color: $color-dark2;
+    flex-grow: 10;
+  }
+
+  .column7 {
+    flex-grow: 14;
+
+  }
+
+  .to_and_from {
+    text-overflow: ellipsis;
+    width: 200px;
+    overflow: hidden;
+    display: block;
+  }
+}

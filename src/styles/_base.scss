@@ -1,0 +1,159 @@
+@import 'imports/index';
+
+html, body {
+  font-family: 'Helvetica Neue Medium', serif;
+}
+
+svg {
+  margin-right: 8px;
+}
+
+.code {
+  background-color: $color-light2;
+  border: $border-code;
+  border-radius: 8px;
+  margin: 40px 0;
+  padding: 20px 30px;
+}
+
+.loading {
+  width: 100%;
+  min-height: calc(100vh - #{$height-footer} - #{$height-header});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 35px 0 60px;
+  max-width: 1120px;
+  min-height: calc(100vh - #{$height-footer});
+}
+
+.selected {
+  border-bottom: 2px solid $color-primary;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+// color
+.color-primary {
+  color: $color-primary;
+}
+
+.color-secondary {
+  color: $color-secondary;
+}
+
+.color-light2 {
+  color: $color-light2;
+}
+
+.color-light3 {
+  color: $color-light3;
+}
+
+.color-light4 {
+  color: $color-light4;
+}
+
+.color-dark1 {
+  color: $color-dark1;
+}
+
+.color-dark2 {
+  color: $color-dark2;
+}
+
+.color-blue1 {
+  color: $color-blue1;
+}
+
+.color-blue2 {
+  color: $color-blue2;
+}
+
+.color-blue5 {
+  color: $color-blue5;
+}
+
+.color-blue6 {
+  color: $color-blue6;
+}
+
+.color-black {
+  color: $color-black;
+}
+
+.blur {
+  filter: blur(1px);
+}
+
+.transparent {
+  background-color: $color-light3;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+}
+
+.a26 {
+  opacity: .26;
+}
+
+// spacing
+.trans-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center-x {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-center-y {
+  display: flex;
+  align-items: center;
+}
+
+.p-0-20 {
+  padding: 0 20px;
+}
+
+.p-0-25 {
+  padding: 0 25px;
+}
+
+.p-0-30 {
+  padding: 0 30px;
+}
+
+.p-0-45 {
+  padding: 0 45px;
+}
+
+.p-r-55 {
+  padding-right: 55px;
+}
+
+.p-10-0 {
+  padding: 10px 0;
+}
+
+.m-t-55 {
+  margin-top: 55px;
+}
+
+.m-r-7 {
+  margin-right: 7px;
+}

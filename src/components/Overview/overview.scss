@@ -1,0 +1,57 @@
+@import '../../styles/imports/index';
+
+#overview {
+  background-color: $color-light1;
+
+  .searchbar {
+    background: $grad-searchBar;
+    border: $border-gray1;
+    border-radius: 6px;
+    height: 131px;
+    margin-bottom: 30px;
+
+    &__content {
+      height: 45px;
+
+      svg {
+        left: 16px;
+        position: absolute;
+        top: 12px;
+      }
+
+      .search__input {
+        background-color: $color-white;
+        border: $border-gray1;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        color: $color-dark2;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          font-size: 14px;
+          color: $color-secondary;
+        }
+      }
+
+      .search__btn {
+        background-color: $color-blue6;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
+        min-width: 164px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .table {
+    &__footer {
+      background-color: white;
+      bottom: 0;
+      position: sticky;
+      z-index: 1020;
+    }
+  }
+}

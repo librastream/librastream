@@ -1,0 +1,41 @@
+// variables
+// color
+$color-white: #FFF;
+$color-light1: #FAFAFd;
+$color-light2: #EEEFF7;
+$color-light3: #C2C2C5;
+$color-light4: #A7A9C0;
+$color-light5: #8B8C99;
+$color-dark2: #33343D;
+$color-dark1: #25233A;
+$color-black: #000;
+
+$color-blue1: #01072D;
+$color-blue2: #01058A;
+$color-blue3: #01346C;
+$color-blue4: #0054C7;
+$color-blue5: #3D89F5;
+$color-blue6: #1AA8E9;
+
+// gradient
+$grad-searchBar: linear-gradient(96.35deg, #00052A -0.44%, #00346C 74.23%);
+$grad-button: radial-gradient(106.61px at -25% -23.81%, $color-blue1 0%, $color-blue3 100%);
+
+// border
+$border-gray1: 1px solid #E7E8F2;
+$border-gray2: 1px solid #E0E1E9;
+$border-code: 1px solid #D8D8D8;
+
+// box-shadow
+$box-shadow-hover: 0 5px 12px rgba(0, 0, 0, 0.1);
+$box-shadow-footer: 0px 4px 30px rgba(0, 0, 0, 0.13);
+$box-shadow-card: 0px 8px 44px rgba(0, 0, 0, 0.15);
+
+// define
+$color-primary: $color-blue2;
+$color-secondary: $color-light4;
+
+$height-header: 71px;
+$height-footer--content: 181px;
+$height-footer--info: 84px;
+$height-footer: calc(#{$height-footer--content} + #{$height-footer--info});

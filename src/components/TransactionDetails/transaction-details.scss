@@ -1,0 +1,65 @@
+@import '../../styles/imports/index';
+
+.transactionDetails {
+  &__loading {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+.transactionDetails {
+  background-color: $color-light1;
+
+  .table {
+    &__body {
+      max-height: unset;
+    }
+  }
+
+  .body {
+  }
+
+  .body > .state {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
+    div:first-of-type {
+      margin-right: 50px;
+
+      svg {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .table {
+    &__body {
+
+      .item {
+        border-bottom: $border-gray1;
+        min-height: 72px;
+        padding: 0 20px;
+        word-break: break-all;
+        &:last-of-type {
+          border: none;
+        }
+      }
+
+      .title {
+        width: 20%;
+      }
+
+      .content {
+        width: 80%;
+      }
+    }
+    .no-top-border {
+      border-top: none;
+    }
+  }
+}

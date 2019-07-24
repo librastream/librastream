@@ -1,0 +1,28 @@
+{
+  "name": "Libra_Blockchain_Explorer_Backend",
+  "version": "1.0.0",
+  "description": "Librastream allows you to explore and search the Libra blockchain for transactions, addresses, tokens, prices and other activities taking place on Libra",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "app": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "libra-grpc": "0.0.4",
+    "lodash": "^4.17.14",
+    "mongodb": "^3.2.7",
+    "morgan": "^1.9.1",
+    "ws": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
